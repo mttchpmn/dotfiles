@@ -110,6 +110,9 @@ alias rm='rm -i'
 # List me like one of your French girls
 alias ls='ls -aFC'
 
+# Longer, but more memorable, yo
+alias symlink='ln -s'
+
 # Cause finding shit is hard
 alias grep='grep --color=auto'
 
