@@ -159,3 +159,26 @@ set nobackup
 set no
 
 
+" ========== KEYMAP SETUP =====================
+
+" Set <leader> key for commands
+let mapleader = ','
+
+" Use jj as <Esc> in insert mode
+inoremap jj <ESC>
+
+" Move between windows using h, j, k, l
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+
+" Move between tabs using h and l in normal mode
+nnoremap <leader>h :tabp
+nnoremap <leader>l :tabn
+
+" In case of permissions issues
+cnoremap w!! %!sudo tee > /dev/null %
+
+" Reload Vim config with `V`
+noremap <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe "echo '.vimrc reloaded'"<CR>
