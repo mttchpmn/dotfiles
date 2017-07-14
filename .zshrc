@@ -1,9 +1,9 @@
 #
-# Matt's     _
-#    _______| |__  _ __ ___
-#   |_  / __| '_ \| '__/ __|
-#  _ / /\__ \ | | | | | (__
-# (_)___|___/_| |_|_|  \___|
+# Matt's        _
+#       _______| |__  _ __ ___
+#      |_  / __| '_ \| '__/ __|
+#     _ / /\__ \ | | | | | (__
+#    (_)___|___/_| |_|_|  \___|
 #
 #############################################
 # BASE SETUP
@@ -84,7 +84,7 @@ function hide() {
 function show() {
   dir=$1.noindex
   chflags nohidden $dir
-  mv $dir $dir
+  mv $dir $1
 }
 
 
@@ -124,6 +124,9 @@ alias zshrc='vim ~/.zshrc'
 
 # Reload this file quick, fool
 alias sourcez='source ~/.zshrc'
+
+# Also definitely not for bewbs
+alias 4c='wget -H -A ".webm" -rc -Di.4cdn.org -P 4chan-pics -nd -erobots=off'
 
 
 #############################################
