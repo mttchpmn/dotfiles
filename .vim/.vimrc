@@ -126,7 +126,7 @@ set smartcase
 set hlsearch
 
 " Cancel a search with ESC
-nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
+"nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
 
 
 " ========== TAB SETUP =====================
