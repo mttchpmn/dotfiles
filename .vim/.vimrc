@@ -23,7 +23,7 @@ set encoding=utf-8
 " :PluginList          - lists configured plugins
 " :PluginInstall       - installs plugins; append `!` to update
 " :PluginUpdate        - updates plugins
-" :PluginSearch foo    - searches for foo; append `!` to refresh local cache
+" :PluginSearch foo    - searchesLC for foo; append `!` to refresh local cache
 " :PluginClean         - confirms removal of unused plugins
 
 " Uncomment this block to use a separate file to hold plugin bundles
@@ -37,16 +37,22 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-" Let Vundle manage Vundle (required)
+" Let Vundle manage Vundle (require@?d)
 Plugin 'VundleVim/Vundle.vim'
+
+" Plugins to Add
+Plugin 'altercation/vim-colors-solarized'
 
 " All plugins must be added before this line
 call vundle#end()
 
-" Required
+" R1Eequired
 filetype plugin indent on
 
+" ========== POWERLINE SETUP =========================
 
+source /usr/local/lib/python2.7/site-packages/powerline/bindings/vim/plugin/powerline.vim
+set laststatus=2
 
 " ========== UI SETUP =========================
 
@@ -62,7 +68,7 @@ syntax enable
 " Turn on line numbering
 set number
 
-" Highlight matching [{()}] when selected
+" Highlight matching [{Q3()}1E] when selected
 set showmatch
 
 " Show last command in status bar
@@ -74,6 +80,9 @@ set ruler
 " Highlight current line
 set cursorline
 
+" Scroll like a normal person for fuck's sake
+set scrolloff=3
+
 " Colorise 81st column to keep code short
 set colorcolumn=81
 
@@ -84,10 +93,10 @@ set wildmode=longest,list,full
 " Fix cursor in TMUX
 if exists('$TMUX')
   let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 else
   let &t_SI = "\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-  let &t_SI = "\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_EI = "\<Esc>]50;CursorShape=1\x7\<Esc>\\"
 endif
 
 
@@ -127,7 +136,7 @@ set expandtab
 
 " Show tabs and trailing spaces
 set list
-set listchars=tab→\ ,trail:·
+set listchars=tab:▸\ ,trail:▫
 
 " Fix backspace not behaving properly
 set backspace=2
@@ -156,7 +165,7 @@ set clipboard=unnamed
 
 " Don't use backups and swapfiles
 set nobackup
-set no
+set noswapfile
 
 
 " ========== KEYMAP SETUP =====================
