@@ -66,11 +66,7 @@ function note() {
 # Save clipboard contents into editable file 
 # of specified type
 function clip() {
-  if [ -f ~/notes/clip.$1]
-  then
-    rm ~/notes/clip.$1
-  fi
-  pbpaste > ~notes/clip.$1
+  pbpaste > ~/notes/clip.$1
   vim ~/notes/clip.$1
 }
 

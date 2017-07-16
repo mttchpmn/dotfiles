@@ -7,8 +7,8 @@
 "       (_)_/ |_|_| |_| |_|_|  \___|
 "
 "
-" ==================================================================================
-
+" ==============================================================================
+"
 " ========== START ===============================
 
 " Cause fuck Vi nigga, Vim is the mack daddy
@@ -16,6 +16,7 @@ set nocompatible
 
 " Mainstream for dayyys
 set encoding=utf-8
+
 
 " ========== VUNDLE SETUP ========================
 
@@ -49,10 +50,22 @@ call vundle#end()
 " R1Eequired
 filetype plugin indent on
 
+
 " ========== POWERLINE SETUP =========================
 
 source /usr/local/lib/python2.7/site-packages/powerline/bindings/vim/plugin/powerline.vim
 set laststatus=2
+
+" ========== MOVEMENT SETUP =====================
+
+" Enable mouse usage
+set mouse=a
+
+" Support mouse resizing in tmux
+if exists('$TMUX')
+  set ttymouse=xterm2
+endif
+
 
 " ========== UI SETUP =========================
 
@@ -68,7 +81,7 @@ syntax enable
 " Turn on line numbering
 set number
 
-" Highlight matching [{Q3()}1E] when selected
+" Highlight matching [{()}] when selected
 set showmatch
 
 " Show last command in status bar
@@ -116,7 +129,6 @@ set hlsearch
 nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
 
 
-
 " ========== TAB SETUP =====================
 
 " Turn on autoindent (indent after pressing enter key)
@@ -140,19 +152,6 @@ set listchars=tab:▸\ ,trail:▫
 
 " Fix backspace not behaving properly
 set backspace=2
-
-
-
-" ========== MOVEMENT SETUP =====================
-
-" Enable mouse usage
-set mouse=a
-
-" Support mouse resizing in tmux
-if exists('$TMUX')
-  set ttymouse=xterm2
-endif
-
 
 
 " ========== CONFIG SETUP =====================
