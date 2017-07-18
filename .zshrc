@@ -64,8 +64,13 @@ function note() {
 }
 
 # View file and pipe back into clipboard
-function catcopy(){
+function catcopy() {
   cat $1 | pbcopy
+}
+
+# Print from clipboard = Geek Points +1
+function zprint() {
+  lpr -P Wherewolf $1
 }
 
 # Save clipboard contents into editable file 
