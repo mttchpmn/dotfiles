@@ -58,9 +58,22 @@ filetype plugin indent on
 
 
 " ========== POWERLINE SETUP =========================
+" https://powerline.readthedocs.io/en/latest/usage/other.html#vim-statusline
 
-source /usr/local/lib/python2.7/site-packages/powerline/bindings/vim/plugin/powerline.vim
+"source /usr/local/lib/python2.7/site-packages/powerline/bindings/vim/plugin/powerline.vim
+
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
+
+" Always display the statusline
 set laststatus=2
+
+" Always show the tabline
+set showtabline=2
+
+" Hide the default mode text i.e. `__ INSERT --`
+set noshowmode
 
 " ========== MOVEMENT SETUP =====================
 
@@ -79,7 +92,7 @@ endif
 set t_Co=256
 
 " Colors are pretty
-colorscheme lucario
+colorscheme solarized
 
 " Code is hard, do yourself a favor
 syntax enable

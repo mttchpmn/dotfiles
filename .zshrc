@@ -47,11 +47,21 @@ antigen apply
 # POWERLINE
 #############################################
 
-source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+# Required
+powerline-daemon -q
+
+# Note - Powerline needs to be installed with Pip for it to work
+# The package name is `powerline-status`
+. /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 
 #############################################
 # FUNCTIONS
 #############################################
+
+# Use pip globally and override need for acitvated virtualenv
+function gpip() {
+  PIP_REQUIRE_VIRTUALENV="" pip "$@"
+}
 
 # Make ASCII text and pipe into clipboard
 function ascii() {
@@ -133,6 +143,9 @@ alias mux='tmuxinator'
 
 # Edit this file quick, fool
 alias zshrc='vim ~/.zshrc'
+
+# Edit vimrc quick, fool
+alias vimrc 'vim ~/.vimrc'
 
 # Reload this file quick, fool
 alias sourcez='source ~/.zshrc'
