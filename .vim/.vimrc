@@ -43,6 +43,12 @@ Plugin 'VundleVim/Vundle.vim'
 
 " Plugins to Add
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'dracula/vim'
+Plugin 'raphamorim/lucario'
+Plugin 'airblade/vim-gitgutter'
+"Plugin 'lilydjwg/colorizer'
+Plugin 'ap/vim-css-color'
+Plugin 'ervandew/supertab'
 
 " All plugins must be added before this line
 call vundle#end()
@@ -73,7 +79,7 @@ endif
 set t_Co=256
 
 " Colors are pretty
-colorscheme solarized
+colorscheme lucario
 
 " Code is hard, do yourself a favor
 syntax enable
@@ -100,6 +106,7 @@ set scrolloff=3
 set colorcolumn=81
 
 " Visual autocompletion for command menu
+set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc
 set wildmenu
 set wildmode=longest,list,full
 
@@ -182,8 +189,8 @@ noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 
 " Move between tabs using h and l in normal mode
-nnoremap <leader>h :tabp
-nnoremap <leader>l :tabn
+nnoremap <leader>h :tabp<CR>
+nnoremap <leader>l :tabn<CR>
 
 " In case of permissions issues
 cnoremap w!! %!sudo tee > /dev/null %

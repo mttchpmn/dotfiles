@@ -63,6 +63,11 @@ function note() {
   vim ~/notes/$1.txt
 }
 
+# View file and pipe back into clipboard
+function catcopy(){
+  cat $1 | pbcopy
+}
+
 # Save clipboard contents into editable file 
 # of specified type
 function clip() {
