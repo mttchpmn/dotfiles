@@ -49,6 +49,8 @@ Plugin 'airblade/vim-gitgutter'
 "Plugin 'lilydjwg/colorizer'
 Plugin 'ap/vim-css-color'
 Plugin 'ervandew/supertab'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 " All plugins must be added before this line
 call vundle#end()
@@ -57,14 +59,19 @@ call vundle#end()
 filetype plugin indent on
 
 
-" ========== POWERLINE SETUP =========================
+" ========== STATUSBAR SETUP =========================
+
+" ========== POWERLINE ==========
 " https://powerline.readthedocs.io/en/latest/usage/other.html#vim-statusline
+"python from powerline.vim import setup as powerline_setup
+"python powerline_setup()
+"python del powerline_setup
 
-"source /usr/local/lib/python2.7/site-packages/powerline/bindings/vim/plugin/powerline.vim
+" ========== AIRLINE ==========
+" Plugin added in vundle setup
+"let g:airline_theme='light'
+let g:airline_powerline_fonts=1
 
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
 
 " Always display the statusline
 set laststatus=2
@@ -92,7 +99,7 @@ endif
 set t_Co=256
 
 " Colors are pretty
-colorscheme solarized
+colorscheme lucario
 
 " Code is hard, do yourself a favor
 syntax enable

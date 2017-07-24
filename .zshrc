@@ -29,15 +29,14 @@ source /usr/local/share/antigen/antigen.zsh
 antigen bundle robbyrussell/oh-my-zsh plugins/git
 antigen bundle robbyrussell/oh-my-zsh plugins/tmux
 antigen bundle robbyrussell/oh-my-zsh plugins/tmuxinator
+antigen bundle dracula/zsh
 
 # All the pretty colors (This must be the last bundle)
 antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Theme it upppp
-#antigen theme agnoster
-
-#TEMP
-ANTIGEN_LOG=~/antigen.log
+antigen theme agnoster
+#antigen theme dracula
 
 # ENGAGE!
 antigen apply
@@ -48,11 +47,11 @@ antigen apply
 #############################################
 
 # Required
-powerline-daemon -q
+#powerline-daemon -q
 
 # Note - Powerline needs to be installed with Pip for it to work
 # The package name is `powerline-status`
-. /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+#. /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 
 #############################################
 # FUNCTIONS
@@ -145,7 +144,7 @@ alias mux='tmuxinator'
 alias zshrc='vim ~/.zshrc'
 
 # Edit vimrc quick, fool
-alias vimrc 'vim ~/.vimrc'
+alias vimrc='vim ~/.vimrc'
 
 # Reload this file quick, fool
 alias sourcez='source ~/.zshrc'
