@@ -95,6 +95,20 @@ function clip() {
   vim ~/notes/clip.$1
 }
 
+# Read a file out loud line by line
+function readaloud() {
+  while IFS='' read -r line || [[ -n "$line" ]]; do
+    say "$line"
+  done < "$1"
+}
+
+# Convert Markdown to faggotty JIRA textile, and save to clipboard
+function jira() {
+  cd ~/notes
+  pandoc jira.md -f markdown -t textile -o jira.textile
+  cat jira.textile | pbcopy
+}
+
 # Not for bewbs
 function hide() {
   dir=$1
@@ -119,11 +133,14 @@ alias home='cd ~/'
 # Typing 5 letters is too slow bro
 alias cl='clear'
 
+# Matt used as Escape Rope - It's Super Effective!
+alias x='exit'
+
 # What's my IP address
 alias ip='ifconfig en0 | grep -w inet'
 
 # Cause fuck having no information
-alias cp='rsync -av'
+#alias cp='rsync -av'
 
 # You're a fuckwit - here's a safety margin
 alias rm='rm -i'
@@ -152,6 +169,8 @@ alias sourcez='source ~/.zshrc'
 # Also definitely not for bewbs
 alias 4c='wget -H -A ".webm" -rc -Di.4cdn.org -P 4chan-pics -nd -erobots=off'
 
+# Export Base64 to clipboard
+alias b64='echo $1 | base64 | pbcopy'
 
 #############################################
 # WHEREWOLF SETTINGS
@@ -165,5 +184,50 @@ export PATH=$PATH:~/code/helperscripts
 # Make it quicker to edit app files
 function editapp() {
   cd $WW_CODE_DIR/wherewolf-whitelabel/app
-  vim -p controllers/MasterController.js resources/base/client-specific.css
+  vim -p resources/base/client-specific.css controllers/MasterController.js
+}
+
+# Streamline the app design process
+function appdesign() {
+  pool=$1
+  echo POOL NAME: $pool
+  echo 
+
+  # Copy app start files, rename, and open dir in finder
+  echo Copying base design folder ...
+  cp ~/design/resources/BASE_1 ~/design
+  sleep 1
+  echo Renaming folder ...
+  mv ~/design/BASE_1 ~/design/$pool
+  cd ~/design/$pool
+  sleep 1
+  echo Opening folder ...
+  open .
+  read -rs '?Press a key to continue ...'
+  echo
+
+  # Switch to WL and checkout branch
+  echo Switching to Whitelabel ...
+  cd ~/code/wherewolf-whitelabel
+  sleep 1
+  echo Checking out branch: wherewolf-$pool
+  git checkout wherewolf-$pool
+  sleep 1
+  echo Pulling from origin ...
+  git pull origin wherewolf-$pool
+  read -rs '?Press a key to continue ... '
+  echo
+
+  # Launch localhost in browser
+  echo Launching local app environment ...
+  echo Please start espresso server
+  open http://localhost:8000/wherewolf
+  read -rs '?Press a key to continue ... '
+  echo
+
+  # Open client-specific.css and MasterController.js for editing
+  cd app
+  echo Opening files for editing ...
+  vim -p resources/base/client-specific.css controllers/MasterController.js
+
 }

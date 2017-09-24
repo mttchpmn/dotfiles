@@ -49,6 +49,7 @@ Plugin 'airblade/vim-gitgutter'
 "Plugin 'lilydjwg/colorizer'
 Plugin 'ap/vim-css-color'
 Plugin 'ervandew/supertab'
+Plugin 'scrooloose/nerdcommenter'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
@@ -91,6 +92,13 @@ set mouse=a
 if exists('$TMUX')
   set ttymouse=xterm2
 endif
+
+
+" ========== COMMENT SETUP =========================
+" Nerdcommenter added as Plugin above
+
+" Add spaces after comment delimiters
+let g:NERDSpaceDelims=1
 
 
 " ========== UI SETUP =========================
