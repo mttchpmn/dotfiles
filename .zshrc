@@ -57,6 +57,11 @@ antigen apply
 # FUNCTIONS
 #############################################
 
+# Open file in sublime
+function sub() {
+  open -a Sublime\ Text $1
+}
+
 # Use pip globally and override need for acitvated virtualenv
 function gpip() {
   PIP_REQUIRE_VIRTUALENV="" pip "$@"
@@ -136,6 +141,17 @@ alias cl='clear'
 # Matt used as Escape Rope - It's Super Effective!
 alias x='exit'
 
+# Git commands are too verbose
+alias gs='git status'
+
+alias gd='git diff'
+
+alias gc='git commit'
+
+alias gp='git push'
+
+alias gp='git pull'
+
 # What's my IP address
 alias ip='ifconfig en0 | grep -w inet'
 
@@ -180,6 +196,7 @@ alias b64='echo $1 | base64 | pbcopy'
 export WW_CODE_DIR=~/code
 source $WW_CODE_DIR/helperscripts/bash/core
 export PATH=$PATH:~/code/helperscripts
+export PATH=$PATH:~/code/helperscripts/wolfplate
 
 # Make it quicker to edit app files
 function editapp() {
