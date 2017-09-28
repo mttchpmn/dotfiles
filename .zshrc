@@ -144,13 +144,15 @@ alias x='exit'
 # Git commands are too verbose
 alias gs='git status'
 
+alias ga='git add'
+
 alias gd='git diff'
 
-alias gc='git commit'
+alias gc='git commit -m'
 
-alias gp='git push'
+alias gps='git push'
 
-alias gp='git pull'
+alias gpl='git pull'
 
 # What's my IP address
 alias ip='ifconfig en0 | grep -w inet'
@@ -180,7 +182,7 @@ alias zshrc='vim ~/.zshrc'
 alias vimrc='vim ~/.vimrc'
 
 # Reload this file quick, fool
-alias sourcez='source ~/.zshrc'
+alias srczsh='source ~/.zshrc'
 
 # Also definitely not for bewbs
 alias 4c='wget -H -A ".webm" -rc -Di.4cdn.org -P 4chan-pics -nd -erobots=off'
