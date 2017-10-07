@@ -1,0 +1,18 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"A File Icon",
+		"GitGutter",
+		"JSHint",
+		"Material Theme",
+		"Package Control",
+		"Pretty JSON",
+		"SublimeLinter",
+		"SublimeLinter-pylint",
+		"SublimeREPL"
+	]
+}
