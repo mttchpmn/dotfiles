@@ -6,12 +6,21 @@
 	"installed_packages":
 	[
 		"A File Icon",
+		"Anaconda",
+		"Color Highlighter",
+		"Git",
 		"GitGutter",
+		"HTML-CSS-JS Prettify",
 		"JSHint",
+		"LiveReload",
+		"Markdown Preview",
+		"MarkdownEditing",
 		"Material Theme",
+		"Nodejs",
 		"Package Control",
 		"Pretty JSON",
 		"SublimeLinter",
+		"SublimeLinter-jshint",
 		"SublimeLinter-pylint",
 		"SublimeREPL"
 	]

@@ -2,8 +2,9 @@
 	"color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",
 	"ignored_packages":
 	[
+		"Markdown",
 		"Vintage"
 	],
-	"open_files_in_new_window": true,
-	"theme": "Material-Theme.sublime-theme",
+	"open_files_in_new_window": false,
+	"theme": "Material-Theme.sublime-theme"
 }
