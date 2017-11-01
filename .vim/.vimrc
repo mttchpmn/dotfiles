@@ -100,6 +100,10 @@ endif
 " Add spaces after comment delimiters
 let g:NERDSpaceDelims=1
 
+" ========== GIT SETUP =========================
+" Enable spell check and text wrapping on Git commits
+autocmd Filetype gitcommit setlocal spell textwidth=72
+
 
 " ========== UI SETUP =========================
 

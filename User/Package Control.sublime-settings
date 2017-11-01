@@ -8,9 +8,11 @@
 		"A File Icon",
 		"Anaconda",
 		"Color Highlighter",
+		"GhostText",
 		"Git",
 		"GitGutter",
 		"HTML-CSS-JS Prettify",
+		"Ionic 2",
 		"JSHint",
 		"LiveReload",
 		"Markdown Preview",
@@ -19,9 +21,12 @@
 		"Nodejs",
 		"Package Control",
 		"Pretty JSON",
+		"SideBarEnhancements",
 		"SublimeLinter",
+		"SublimeLinter-contrib-tslint",
 		"SublimeLinter-jshint",
 		"SublimeLinter-pylint",
-		"SublimeREPL"
+		"SublimeREPL",
+		"TypeScript"
 	]
 }
