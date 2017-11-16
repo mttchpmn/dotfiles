@@ -1,10 +1,11 @@
 {
-	"color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",
+	"color_scheme": "Packages/Material Theme/schemes/Material-Theme-Palenight.tmTheme",
 	"ignored_packages":
 	[
 		"Markdown",
 		"Vintage"
 	],
+	"material_theme_accent_cyan": true,
 	"open_files_in_new_window": false,
 	"theme": "Material-Theme.sublime-theme"
 }
