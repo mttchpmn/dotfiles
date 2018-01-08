@@ -58,7 +58,7 @@ antigen apply
 #############################################
 
 # If theme fucks out, uncomment this for a standard PS1 prompt
-# export $PS1='%T %n@%m:%/ >> ' 
+# export PS1='%T  %F{cyan}%n%f@%F{magenta}%m%f:%F{green}%/%f >> '
 
 #############################################
 # FUNCTIONS
