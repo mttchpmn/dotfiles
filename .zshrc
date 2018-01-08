@@ -54,6 +54,13 @@ antigen apply
 #. /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 
 #############################################
+# PROMPT
+#############################################
+
+# If theme fucks out, uncomment this for a standard PS1 prompt
+# export $PS1='%T %n@%m:%/ >> ' 
+
+#############################################
 # FUNCTIONS
 #############################################
 
