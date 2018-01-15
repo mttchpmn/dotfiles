@@ -17,6 +17,8 @@ brew install python3
 
 brew install zsh
 
+brew install zsh-syntax-highlighting
+
 brew install tree
 
 brew install grep
@@ -38,6 +40,8 @@ brew-cask install visual-studio-code
 
 brew cask install google-chrome
 
+brew cask install google-drive-file-stream
+
 brew cask install gimp
 
 brew cask install inkscape
@@ -45,3 +49,5 @@ brew cask install inkscape
 brew cask install spotify
 
 brew cask install adobe-creative-cloud
+
+brew cask install docker

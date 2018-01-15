@@ -9,6 +9,18 @@
 # BASE SETUP
 #############################################
 
+# CHANGING SHELL TO ZSH:
+
+# Install zsh with homebrew first
+# `chsh -s `which zsh``
+
+# If 'non-standard shell' error:
+# sudo echo "$(which zsh)" >> /etc/shells
+
+# If permission denied:
+# sudo sh -c "echo $(which zsh) >> /etc/shells"
+
+
 # Cause Nano is for bitch-ass niggas
 export EDITOR=vim
 
@@ -20,26 +32,26 @@ export EDITOR=vim
 # Note - Install Antigen using Homebrew
 
 # Let's get this shit started fool
-source /usr/local/share/antigen/antigen.zsh
+# source /usr/local/share/antigen/antigen.zsh
 
 # Load the oh-my-zsh plugin library
 #antigen use oh-my-zsh
 
 # Load the standard stuff from oh-my-zsh
-antigen bundle robbyrussell/oh-my-zsh plugins/git
-antigen bundle robbyrussell/oh-my-zsh plugins/tmux
-antigen bundle robbyrussell/oh-my-zsh plugins/tmuxinator
+# antigen bundle robbyrussell/oh-my-zsh plugins/git
+# antigen bundle robbyrussell/oh-my-zsh plugins/tmux
+# antigen bundle robbyrussell/oh-my-zsh plugins/tmuxinator
 #antigen bundle dracula/zsh
 
 # All the pretty colors (This must be the last bundle)
-antigen bundle zsh-users/zsh-syntax-highlighting
+# antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Theme it upppp
 #antigen theme agnoster
 #antigen theme dracula
 
 # ENGAGE!
-antigen apply
+# antigen apply
 
 
 #############################################
@@ -58,7 +70,7 @@ antigen apply
 #############################################
 
 # If theme fucks out, uncomment this for a standard PS1 prompt
-# export PS1='%T  %F{cyan}%n%f@%F{magenta}%m%f:%F{green}%/%f >> '
+export PS1='%T  %F{cyan}%n%f@%F{magenta}%m%f:%F{green}%/%f >> '
 
 #############################################
 # FUNCTIONS
@@ -265,3 +277,6 @@ function appdesign() {
   vim -p resources/base/client-specific.css controllers/MasterController.js
 
 }
+
+# ZSH Syntax Highlighting (This needs to be the last line)
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
