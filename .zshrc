@@ -29,13 +29,13 @@ source /usr/local/share/antigen/antigen.zsh
 antigen bundle robbyrussell/oh-my-zsh plugins/git
 antigen bundle robbyrussell/oh-my-zsh plugins/tmux
 antigen bundle robbyrussell/oh-my-zsh plugins/tmuxinator
-antigen bundle dracula/zsh
+#antigen bundle dracula/zsh
 
 # All the pretty colors (This must be the last bundle)
 antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Theme it upppp
-antigen theme agnoster
+#antigen theme agnoster
 #antigen theme dracula
 
 # ENGAGE!
@@ -63,6 +63,11 @@ antigen apply
 #############################################
 # FUNCTIONS
 #############################################
+
+# Launch a web server in current dir on specified port
+function serve() { 
+	python3 -m http.server $1
+}
 
 # Open file in sublime
 function sub() {
