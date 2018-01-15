@@ -17,6 +17,8 @@ brew install python3
 
 brew install zsh
 
+brew install tree
+
 brew install grep
 
 brew install htop
