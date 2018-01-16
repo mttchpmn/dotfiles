@@ -12,54 +12,12 @@
 # Cause Nano is for bitch-ass niggas
 export EDITOR=vim
 
-
-#############################################
-# ANTIGEN (Plugin and Theme Manager)
-#############################################
-
-# Note - Install Antigen using Homebrew
-
-# Let's get this shit started fool
-source /usr/local/share/antigen/antigen.zsh
-
-# Load the oh-my-zsh plugin library
-#antigen use oh-my-zsh
-
-# Load the standard stuff from oh-my-zsh
-antigen bundle robbyrussell/oh-my-zsh plugins/git
-antigen bundle robbyrussell/oh-my-zsh plugins/tmux
-antigen bundle robbyrussell/oh-my-zsh plugins/tmuxinator
-#antigen bundle dracula/zsh
-
-# All the pretty colors (This must be the last bundle)
-antigen bundle zsh-users/zsh-syntax-highlighting
-
-# Theme it upppp
-#antigen theme agnoster
-#antigen theme dracula
-
-# ENGAGE!
-antigen apply
-
-
-#############################################
-# POWERLINE
-#############################################
-
-# Required
-#powerline-daemon -q
-
-# Note - Powerline needs to be installed with Pip for it to work
-# The package name is `powerline-status`
-#. /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
-
 #############################################
 # PROMPT
 #############################################
 
-# If theme fucks out, uncomment this for a standard PS1 prompt
-# export PS1='%T  %F{cyan}%n%f@%F{magenta}%m%f:%F{green}%/%f >> '
-
+# Prompt me babyyyyy
+export PS1='%T  %F{cyan}%n%f@%F{magenta}%m%f:%F{green}%/%f >> '
 #############################################
 # FUNCTIONS
 #############################################
@@ -119,12 +77,6 @@ function readaloud() {
   done < "$1"
 }
 
-# Convert Markdown to faggotty JIRA textile, and save to clipboard
-function jira() {
-  cd ~/notes
-  pandoc jira.md -f markdown -t textile -o jira.textile
-  cat jira.textile | pbcopy
-}
 
 # Not for bewbs
 function hide() {
@@ -144,9 +96,6 @@ function show() {
 # ALIASES
 #############################################
 
-# There's no place like home
-alias home='cd ~/'
-
 # Typing 5 letters is too slow bro
 alias cl='clear'
 
@@ -162,15 +111,15 @@ alias gd='git diff'
 
 alias gc='git commit -m'
 
-alias gps='git push'
+alias gpush='git push'
 
-alias gpl='git pull'
+alias gpull='git pull'
 
 # Make me all pretty like
-alias glog='git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit'
+# alias glog='git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit'
 
 # What's my IP address
-alias ip='ifconfig en0 | grep -w inet'
+alias ip='ifconfig en0 | grep -w inet' # Mac
 
 # Cause fuck having no information
 #alias cp='rsync -av'
@@ -180,6 +129,9 @@ alias rm='rm -i'
 
 # List me like one of your French girls
 alias ls='ls -aFC'
+
+# Tree is the fucking bomb
+alias ts='tree -a'
 
 # Longer, but more memorable, yo
 alias symlink='ln -s'
