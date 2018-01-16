@@ -3,6 +3,7 @@ sudo apt-get update
 
 sudo apt-get install git
 sudo apt-get install zsh
+sudo apt-get install zsh-syntax-highlighting
 sudo apt-get install tmux
 sudo apt-get install htop
 sudo apt-get install openssh

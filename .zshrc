@@ -217,3 +217,5 @@ function appdesign() {
   vim -p resources/base/client-specific.css controllers/MasterController.js
 
 }
+
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
