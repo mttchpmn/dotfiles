@@ -12,6 +12,8 @@ sudo apt-get install python3
 sudo apt-get install tree
 sudo apt-get install grep
 
+sudo apt-get install terminator
+
 sudo apt-get install nodejs
 sudo apt-get install npm
 
