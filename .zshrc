@@ -20,10 +20,8 @@
 # If permission denied:
 # sudo sh -c "echo $(which zsh) >> /etc/shells"
 
-
 # Cause Nano is for bitch-ass niggas
 export EDITOR=vim
-
 
 #############################################
 # ANTIGEN (Plugin and Theme Manager)
@@ -41,29 +39,15 @@ export EDITOR=vim
 # antigen bundle robbyrussell/oh-my-zsh plugins/git
 # antigen bundle robbyrussell/oh-my-zsh plugins/tmux
 # antigen bundle robbyrussell/oh-my-zsh plugins/tmuxinator
-#antigen bundle dracula/zsh
 
 # All the pretty colors (This must be the last bundle)
 # antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Theme it upppp
 #antigen theme agnoster
-#antigen theme dracula
 
 # ENGAGE!
 # antigen apply
-
-
-#############################################
-# POWERLINE
-#############################################
-
-# Required
-#powerline-daemon -q
-
-# Note - Powerline needs to be installed with Pip for it to work
-# The package name is `powerline-status`
-#. /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 
 #############################################
 # PROMPT
@@ -124,20 +108,6 @@ function clip() {
   vim ~/notes/clip.$1
 }
 
-# Read a file out loud line by line
-function readaloud() {
-  while IFS='' read -r line || [[ -n "$line" ]]; do
-    say "$line"
-  done < "$1"
-}
-
-# Convert Markdown to faggotty JIRA textile, and save to clipboard
-function jira() {
-  cd ~/notes
-  pandoc jira.md -f markdown -t textile -o jira.textile
-  cat jira.textile | pbcopy
-}
-
 # Not for bewbs
 function hide() {
   dir=$1
@@ -156,11 +126,8 @@ function show() {
 # ALIASES
 #############################################
 
-# There's no place like home
-alias home='cd ~/'
-
 # Typing 5 letters is too slow bro
-alias cl='clear'
+alias rs='reset'
 
 # Matt used as Escape Rope - It's Super Effective!
 alias x='exit'
@@ -179,16 +146,19 @@ alias gps='git push'
 alias gpl='git pull'
 
 # Make me all pretty like
-alias glog='git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit'
+alias glog='git log --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
 
 # What's my IP address
 alias ip='ifconfig en0 | grep -w inet'
 
 # Cause fuck having no information
-#alias cp='rsync -av'
+alias cp='cp -v'
 
 # You're a fuckwit - here's a safety margin
 alias rm='rm -i'
+
+# NUKE IT OI
+alias rmf='rm -rf'
 
 # List me like one of your French girls
 alias ls='ls -aFC'
@@ -226,57 +196,6 @@ export WW_CODE_DIR=~/code
 source $WW_CODE_DIR/helperscripts/bash/core
 export PATH=$PATH:~/code/helperscripts
 export PATH=$PATH:~/code/helperscripts/wolfplate
-
-# Make it quicker to edit app files
-function editapp() {
-  cd $WW_CODE_DIR/wherewolf-whitelabel/app
-  vim -p resources/base/client-specific.css controllers/MasterController.js
-}
-
-# Streamline the app design process
-function appdesign() {
-  pool=$1
-  echo POOL NAME: $pool
-  echo 
-
-  # Copy app start files, rename, and open dir in finder
-  echo Copying base design folder ...
-  cp ~/design/resources/BASE_1 ~/design
-  sleep 1
-  echo Renaming folder ...
-  mv ~/design/BASE_1 ~/design/$pool
-  cd ~/design/$pool
-  sleep 1
-  echo Opening folder ...
-  open .
-  read -rs '?Press a key to continue ...'
-  echo
-
-  # Switch to WL and checkout branch
-  echo Switching to Whitelabel ...
-  cd ~/code/wherewolf-whitelabel
-  sleep 1
-  echo Checking out branch: wherewolf-$pool
-  git checkout wherewolf-$pool
-  sleep 1
-  echo Pulling from origin ...
-  git pull origin wherewolf-$pool
-  read -rs '?Press a key to continue ... '
-  echo
-
-  # Launch localhost in browser
-  echo Launching local app environment ...
-  echo Please start espresso server
-  open http://localhost:8000/wherewolf
-  read -rs '?Press a key to continue ... '
-  echo
-
-  # Open client-specific.css and MasterController.js for editing
-  cd app
-  echo Opening files for editing ...
-  vim -p resources/base/client-specific.css controllers/MasterController.js
-
-}
 
 # ZSH Syntax Highlighting (This needs to be the last line)
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
