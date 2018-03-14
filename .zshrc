@@ -24,32 +24,6 @@
 export EDITOR=vim
 
 #############################################
-# ANTIGEN (Plugin and Theme Manager)
-#############################################
-
-# Note - Install Antigen using Homebrew
-
-# Let's get this shit started fool
-# source /usr/local/share/antigen/antigen.zsh
-
-# Load the oh-my-zsh plugin library
-#antigen use oh-my-zsh
-
-# Load the standard stuff from oh-my-zsh
-# antigen bundle robbyrussell/oh-my-zsh plugins/git
-# antigen bundle robbyrussell/oh-my-zsh plugins/tmux
-# antigen bundle robbyrussell/oh-my-zsh plugins/tmuxinator
-
-# All the pretty colors (This must be the last bundle)
-# antigen bundle zsh-users/zsh-syntax-highlighting
-
-# Theme it upppp
-#antigen theme agnoster
-
-# ENGAGE!
-# antigen apply
-
-#############################################
 # PROMPT
 #############################################
 
@@ -78,11 +52,6 @@ function gpip() {
 # Make ASCII text and pipe into clipboard
 function ascii() {
   figlet -f big $* | pbcopy
-}
-
-# Shutdown the computer
-function nightnight() {
-  sudo shutdown -h now
 }
 
 # Create a quick note with specified filename
@@ -163,14 +132,8 @@ alias rmf='rm -rf'
 # List me like one of your French girls
 alias ls='ls -aFC'
 
-# Longer, but more memorable, yo
-alias symlink='ln -s'
-
 # Cause finding shit is hard
 alias grep='grep --color=auto'
-
-# Tmuxinator is a long-ass word
-alias mux='tmuxinator'
 
 # Edit this file quick, fool
 alias zshrc='vim ~/.zshrc'
