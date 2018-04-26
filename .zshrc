@@ -22,6 +22,12 @@ export PS1='%T  %F{cyan}%n%f@%F{magenta}%m%f:%F{green}%/%f >> '
 # FUNCTIONS
 #############################################
 
+# Colorise cat output and pipe to less
+# sudo apt install python-pygments
+function cac() {
+	pygmentize $1 | less -R
+}
+
 # Launch a web server in current dir on specified port
 function serve() { 
 	python3 -m http.server $1
