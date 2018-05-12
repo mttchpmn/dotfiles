@@ -95,6 +95,8 @@ function show() {
 # ALIASES
 #############################################
 
+alias lock='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
+
 # Typing 5 letters is too slow bro
 alias rs='reset'
 

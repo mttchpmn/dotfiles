@@ -43,10 +43,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 " Plugins to Add
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'dracula/vim'
-Plugin 'raphamorim/lucario'
 Plugin 'airblade/vim-gitgutter'
-"Plugin 'lilydjwg/colorizer'
 Plugin 'ap/vim-css-color'
 Plugin 'ervandew/supertab'
 Plugin 'scrooloose/nerdcommenter'
@@ -56,17 +53,11 @@ Plugin 'vim-airline/vim-airline-themes'
 " All plugins must be added before this line
 call vundle#end()
 
-" R1Eequired
+" Required
 filetype plugin indent on
 
 
 " ========== STATUSBAR SETUP =========================
-
-" ========== POWERLINE ==========
-" https://powerline.readthedocs.io/en/latest/usage/other.html#vim-statusline
-"python from powerline.vim import setup as powerline_setup
-"python powerline_setup()
-"python del powerline_setup
 
 " ========== AIRLINE ==========
 " Plugin added in vundle setup
@@ -111,7 +102,7 @@ autocmd Filetype gitcommit setlocal spell textwidth=72
 set t_Co=256
 
 " Colors are pretty
-colorscheme lucario
+colorscheme solarized
 
 " Code is hard, do yourself a favor
 syntax enable
