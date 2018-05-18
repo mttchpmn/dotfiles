@@ -1,0 +1,39 @@
+#######################################################################################
+#
+#                             mttchpmn - .bash_aliases
+#
+#######################################################################################
+
+# Typing 5 letters is too slow bro
+alias cl='clear'
+
+# Matt used as Escape Rope - It's Super Effective!
+alias x='exit'
+
+# Git commands are too verbose
+alias gs='git status'
+
+alias ga='git add'
+
+alias gd='git diff'
+
+alias gc='git commit -m'
+
+alias gps='git push'
+
+alias gpl='git pull'
+
+# Make me all pretty like
+alias glog='git log --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
+
+# What's my IP address
+alias ip='ifconfig en0 | grep -w inet'
+
+# Cause fuck having no information
+alias cp='cp -v'
+
+# You're a fuckwit - here's a safety margin
+alias rm='rm -i'
+
+# NUKE IT OI
+alias rmf='rm -rf'
