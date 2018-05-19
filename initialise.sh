@@ -43,7 +43,7 @@ setup_git () {
 
 setup_npm () {
     sudo npm install -g npm
-    sudo npm install -g eslint sails express ionic @angular/cli
+    sudo npm install -g eslint nodemon sails express ionic @angular/cli
 }
 
 setup_dotfiles () {
