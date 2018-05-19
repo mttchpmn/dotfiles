@@ -56,7 +56,8 @@ setup_dotfiles () {
     source ~/.bashrc
 }
 
-echo "Initialising new set up..."
+echo "Initialising new system setup"
+read -p "Press enter to continue"
 
 echo "Setting up system packages"
 setup_packages
