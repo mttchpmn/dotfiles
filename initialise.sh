@@ -5,7 +5,7 @@ setup_packages () {
     sudo apt-get update
 
     # Install base packages
-    sudo apt-get install -y git vim tmux tree grep htop openssh nodejs npm python python3
+    sudo apt-get install -y git vim tmux tree grep htop openssh nodejs npm python python3 postgresql postgresql-contrib
 
     # Upgrade existing
     sudo apt-get upgrade
