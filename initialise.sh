@@ -43,7 +43,7 @@ setup_git () {
 
 setup_npm () {
     sudo npm install -g npm
-    sudo npm install -g eslint nodemon sails express ionic @angular/cli
+    sudo npm install -g eslint nodemqon sails express ionic @angular/cli
 }
 
 setup_dotfiles () {
@@ -56,19 +56,37 @@ setup_dotfiles () {
     source ~/.bashrc
 }
 
+checkThen () {
+read -p "Press anything to continue or s to skip" ANS
+if [[ $ANS != s ]]
+then
+    echo 'Proceeding...'
+    $($1)
+fi 
+if [[ $ANS = s ]]
+then
+    echo 'Skipping...'
+fi 
+}
+
+foo () {
+    echo "Blah"
+}
+
+###################################################################################
+
 echo "Initialising new system setup"
-read -p "Press enter to continue"
 
 echo "Setting up system packages"
-setup_packages
+checkThen setup_packages
 
 echo "Setting up Git"
-setup_git
+checkThen setup_git
 
 echo "Setting up NPM"
-setup_npm
+checkThen setup_npm
 
 echo "Setting up dotfiles"
-setup_dotfiles
+checkThen setup_dotfiles
 
 echo "All done - enjoy!"
