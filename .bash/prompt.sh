@@ -19,8 +19,5 @@ GIT_PS1_SHOWDIRTYSTATE="true"
 #GIT_PS1_SHOWUPSTREAM="auto"
 #GIT_PS1_STATESEPARATOR="  "
 
-# Needed on OSX - works fine on Ubuntu
-source /usr/local/Cellar/git/2.16.2/etc/bash_completion.d/git-prompt.sh
-
 # PROMPT DEFINITION
 export PS1="\[$COL_LGREEN\]\A\[$RS\] \[$COL_CYAN\]\u\[$RS\]@\[$RS\]\[$COL_PURPLE\]\h\[$RS\]:[\[$COL_YELLOW\]\w\[$RS\]]:\[$COL_LGREEN\]\$(__git_ps1)\[$RS\] "
