@@ -17,5 +17,8 @@ alias c='/mnt/c/Users/mttchpmn'
 alias shutdown='/mnt/c/Windows/System32/shutdown.exe /s'
 alias reboot='/mnt/c/Windows/System32/shutdown.exe /r'
 
-# Be able to use CMD within Hyper
-alias cmd='/mnt/c/Windows/System32/cmd.exe'
+# Be able to call CMD commands within Hyper
+alias cmd='/mnt/c/Windows/System32/cmd.exe /c'
+
+# Open Windows files and programs from WSL Bash
+alias open='/mnt/c/Windows/System32/cmd.exe /c start'
