@@ -13,11 +13,10 @@ source ~/.bash/bash_aliases
 # Load PS1 prompt
 source ~/.bash/prompt.sh
 
-# Load Wherewolf settings
-source ~/.bash/wherewolf.sh
-
 # Load windows-specific and docker config
-source ~/.bash/windows.sh
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    source ~/.bash/windows.sh
+fi
 
 # Make sure we start in our home dir (necessary in WSL)
 cd ~/

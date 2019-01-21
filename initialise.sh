@@ -37,16 +37,8 @@ setup_git () {
         mkdir code
         cd code
 
-        # Wherewolf repositories
-        git clone git@github.com:wherewolfnz/helperscripts.git
-        git clone git@github.com:wherewolfnz/docker.git
-        git clone git@github.com:wherewolfnz/frontend.git
-        git clone git@github.com:wherewolfnz/wherewolf-backend.git
-        git clone git@github.com:wherewolfnz/wherewolf-whitelabel.git
-        git clone git@github.com:wherewolfnz/desmond.git
-
         # Personal Repositories
-        git clone git@github.com:mttchpmn/MetScope.git
+        git clone git@github.com:mttchpmn/metscope-api.git
         git clone git@github.com:mttchpmn/metscope-frontend.git
     return
 fi
@@ -58,7 +50,7 @@ setup_npm () {
     if [[ $ANS != s ]]
     then
         sudo npm install -g npm
-        sudo npm install -g eslint nodemqon sails express react ionic @angular/cli
+        sudo npm install -g eslint nodemon sails express react ionic @angular/cli
     return
 fi
 echo 'Skipping...'
@@ -68,6 +60,7 @@ setup_dotfiles () {
     read -p "Press ENTER to proceed. Press s to skip" ANS
     if [[ $ANS != s ]]
     then
+        rm ~/.bashrc
         ln -s ~/dotfiles/.bashrc ~/.bashrc
         ln -s ~/dotfiles/.bash ~/.bash
 
