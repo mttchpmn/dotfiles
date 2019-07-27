@@ -7,6 +7,10 @@
 # Typing 5 letters is too slow bro
 alias cl='clear'
 
+# Pipe stuff into the clipboard (e.g. echo foo | xclip)
+# NB: Need to install it with apt-get first
+alias xclip='xclip -selection c'
+
 # Matt used as Escape Rope - It's Super Effective!
 alias x='exit'
 
