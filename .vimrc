@@ -32,6 +32,9 @@ set noshowmode
 " Highlight current line
 set cursorline
 
+" Set text width
+set textwidth=79
+
 " Colorise 81st column to keep lines short
 set colorcolumn=81
 
@@ -116,11 +119,17 @@ let mapleader=","
 " Set jj to send <esc> key
 inoremap jj <esc>
 
-" Save file
-nnoremap<leader>w :w!<CR>
-
 " Save Vim session (Reopen with `vim -S`)
 nnoremap<leader>s :mksession<CR>
+
+" Make vertical split and switch into it
+nnoremap<leader>w <C-w>v<C-w>l
+
+" Use Ctrl+hjkl keys to move between splits
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 
 "#################################################
