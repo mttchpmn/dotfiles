@@ -26,8 +26,8 @@ set laststatus=2
 " Show last command
 set showcmd
 
-" Show mode
-set showmode
+" Don't show mode (we're showing it in statusline instead)
+set noshowmode
 
 " Highlight current line
 set cursorline
@@ -126,14 +126,37 @@ nnoremap<leader>s :mksession<CR>
 "#################################################
 " STATUS LINE
 
-" Functions (pinched from https://shapeshed.com/vim-statuslines/)
+" Git functions (pinched from https://shapeshed.com/vim-statuslines/)
 function! GitBranch()
   return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
 endfunction
 
 function! StatuslineGit()
   let l:branchname = GitBranch()
-  return strlen(l:branchname) > 0 ? l:branchname : ''
+  return strlen(l:branchname) > 0 ?'  '.l:branchname.' ' : ''
+endfunction
+
+
+" Mode function pinched from http://tdaly.co.uk/projects/vim-statusline-generator/
+function! StatuslineMode()
+  let l:mode=mode()
+  if l:mode==#"n"
+    return "NORMAL"
+  elseif l:mode==?"v"
+    return "VISUAL"
+  elseif l:mode==#"i"
+    return "INSERT"
+  elseif l:mode==#"R"
+    return "REPLACE"
+  elseif l:mode==?"s"
+    return "SELECT"
+  elseif l:mode==#"t"
+    return "TERMINAL"
+  elseif l:mode==#"c"
+    return "COMMAND"
+  elseif l:mode==#"!"
+    return "SHELL"
+  endif
 endfunction
 
 " Custom statusline 
@@ -147,11 +170,15 @@ hi User3 ctermbg=black ctermfg=white   guibg=black guifg=white
 hi User4 ctermbg=black ctermfg=red     guibg=black guifg=red
 hi User5 ctermbg=black ctermfg=green   guibg=black guifg=green
 hi User6 ctermbg=blue  ctermfg=white   guibg=blue  guifg=white
+hi User7 ctermbg=black  ctermfg=magenta   guibg=black  guifg=magenta
 
 " set statusline=%#StatusLineTerm#      " Green bg white fg
-set statusline=%1*                    
-set statusline+=\                     " Space delimiter
+set statusline=                    
+set statusline+=%1*                    
 set statusline+=%{StatuslineGit()}    " Git information
+set statusline+=%7*                    " Default colors
+set statusline+=\                     " Space delimiter
+set statusline+=%{StatuslineMode()}
 set statusline+=\                     " Space delimiter
 set statusline+=%6*                    " Default colors
 set statusline+=\ %F                  " Full Filepath
