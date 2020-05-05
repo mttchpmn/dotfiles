@@ -38,9 +38,6 @@ set colorcolumn=81
 " Show current position
 set ruler
 
-" Wrap lines
-set wrap
-
 " Show filename in window title
 set title
 
@@ -61,6 +58,9 @@ set showmatch
 
 " Automatically read file when changed on disk
 set autoread
+
+" Wrap lines
+set wrap
 
 " Don't skip lines if they are wrapped
 nmap j gj
@@ -92,7 +92,7 @@ set expandtab
 " SEARCHING
 
 " Search as characters are entered
-set incsearch
+set incsearch 
 
 " Highlight matches
 set hlsearch
@@ -103,8 +103,8 @@ set ignorecase
 " Switch to case sensitive if query is uppercase
 set smartcase
 
-" Stop highlighting with ,+space
-nnoremap <leader><space> :nohlsearch<CR> " ?
+" Stop highlighting matches with ,+space
+nnoremap <leader><space> :nohlsearch<CR>
 
 
 "#################################################
@@ -126,14 +126,50 @@ nnoremap<leader>s :mksession<CR>
 "#################################################
 " STATUS LINE
 
-" Format the status line
-" set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
+" Functions (pinched from https://shapeshed.com/vim-statuslines/)
+function! GitBranch()
+  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+endfunction
+
+function! StatuslineGit()
+  let l:branchname = GitBranch()
+  return strlen(l:branchname) > 0 ? l:branchname : ''
+endfunction
+
+" Custom statusline 
+" run `:help statusline` for additional flags
+" run `:highlight` for available color modifiers
+
+set statusline=%#StatusLineTerm#      " Green bg white fg
+set statusline+=\                     " Space delimiter
+set statusline+=%{StatuslineGit()}    " Git information
+set statusline+=\                     " Space delimiter
+set statusline+=%#PmenuSel#           " Blue bg white fg
+set statusline+=\ %F                  " Full Filepath
+set statusline+=%{&modified?'[+]':''} " Show [+] if file modified
+set statusline+=\                     " Space delimiter
+set statusline+=(%L\ Lines)           " Total lines
+set statusline+=%=                    " Delimiter for left / right sides of statusline
+set statusline+=\ %{&fileencoding?&fileencoding:&encoding}  " utf-8
+set statusline+=\[%{&fileformat}\]\                          " unix
+set statusline+=%#Statement#          " Black bg blue fg
+set statusline+=\                     " Space delimiter
+set statusline+=\ %Y                " Filetype
+set statusline+=%#ModeMsg#            " Black bg white fg
+set statusline+=\ \|\                 " ' | ' delimiter
+set statusline+=%#WarningMsg#         " Black bg red fg
+set statusline+=\ %l:%c               " Line number: column number
+set statusline+=%#ModeMsg#            " Black bg white fg
+set statusline+=\ \|\                 " ' | ' delimiter
+set statusline+=%#MoreMsg#           " Black bg green fg
+set statusline+=\ %p%%                " Percentage through file
+set statusline+=\                     " Space delimiter
 
 
 "#################################################
 " TMUX
 
-" allows cursor change in tmux mode
+" Allow cursor change in tmux mode
 if exists('$TMUX')
     let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
     let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
