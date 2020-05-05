@@ -164,6 +164,7 @@ set statusline+=\ \|\                 " ' | ' delimiter
 set statusline+=%#MoreMsg#           " Black bg green fg
 set statusline+=\ %p%%                " Percentage through file
 set statusline+=\                     " Space delimiter
+" set statusline+=%*                    " Default colors
 
 
 "#################################################
