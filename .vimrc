@@ -32,6 +32,9 @@ set showmode
 " Highlight current line
 set cursorline
 
+" Colorise 81st column to keep lines short
+set colorcolumn=81
+
 " Show current position
 set ruler
 
