@@ -140,31 +140,39 @@ endfunction
 " run `:help statusline` for additional flags
 " run `:highlight` for available color modifiers
 
-set statusline=%#StatusLineTerm#      " Green bg white fg
+" Define custom colors use `%1*` to call color1 etc and `%*` to reset to default
+hi User1 ctermbg=green ctermfg=black   guibg=green guifg=black
+hi User2 ctermbg=black ctermfg=blue    guibg=black guifg=blue
+hi User3 ctermbg=black ctermfg=white   guibg=black guifg=white
+hi User4 ctermbg=black ctermfg=red     guibg=black guifg=red
+hi User5 ctermbg=black ctermfg=green   guibg=black guifg=green
+hi User6 ctermbg=blue  ctermfg=white   guibg=blue  guifg=white
+
+" set statusline=%#StatusLineTerm#      " Green bg white fg
+set statusline=%1*                    
 set statusline+=\                     " Space delimiter
 set statusline+=%{StatuslineGit()}    " Git information
 set statusline+=\                     " Space delimiter
-set statusline+=%#PmenuSel#           " Blue bg white fg
+set statusline+=%6*                    " Default colors
 set statusline+=\ %F                  " Full Filepath
 set statusline+=%{&modified?'[+]':''} " Show [+] if file modified
 set statusline+=\                     " Space delimiter
 set statusline+=(%L\ Lines)           " Total lines
 set statusline+=%=                    " Delimiter for left / right sides of statusline
-set statusline+=\ %{&fileencoding?&fileencoding:&encoding}  " utf-8
+set statusline+=\ %{&fileencoding?&fileencoding:&encoding}   " utf-8
 set statusline+=\[%{&fileformat}\]\                          " unix
-set statusline+=%#Statement#          " Black bg blue fg
+set statusline+=%2*         
 set statusline+=\                     " Space delimiter
-set statusline+=\ %Y                " Filetype
-set statusline+=%#ModeMsg#            " Black bg white fg
+set statusline+=\ %Y                  " Filetype
+set statusline+=%3*           
 set statusline+=\ \|\                 " ' | ' delimiter
-set statusline+=%#WarningMsg#         " Black bg red fg
+set statusline+=%4*        
 set statusline+=\ %l:%c               " Line number: column number
-set statusline+=%#ModeMsg#            " Black bg white fg
+set statusline+=%3*            
 set statusline+=\ \|\                 " ' | ' delimiter
-set statusline+=%#MoreMsg#           " Black bg green fg
+set statusline+=%5*           
 set statusline+=\ %p%%                " Percentage through file
 set statusline+=\                     " Space delimiter
-" set statusline+=%*                    " Default colors
 
 
 "#################################################
