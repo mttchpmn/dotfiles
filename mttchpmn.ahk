@@ -51,7 +51,9 @@ else
     Run, chrome.exe
 return
 
+; Switch to previous window with Ctrl+ Alt+ ;
+^!;::Send !{Tab}
+
 ; Launch File Explorer with Ctrl+Alt+e
 ^!e::
 Run, explorer.exe
-
