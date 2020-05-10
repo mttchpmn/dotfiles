@@ -1,39 +1,61 @@
-
 #  mttchpmn  _               _
 #          | |__   __ _ ___| |__  _ __ ___
 #          | '_ \ / _` / __| '_ \| '__/ __|
 #         _| |_) | (_| \__ \ | | | | | (__
 #        (_)_.__/ \__,_|___/_| |_|_|  \___|
-#   
-
+#
 
 ##################################################
 # UBUNTU DEFAULTS
 
 # Load defaults if they exist
 if [ -f ~/.bashdefaults ]; then
-    . ~/.bashdefaults
+  . ~/.bashdefaults
 fi
 
 # Set default editor
 export EDITOR=vim
 
-
 ##################################################
-# ALIASES 
+# ALIASES
 
 # Utility
 alias cl='clear'
 alias x='exit'
+alias duh='du -h --max-depth=1'
+alias dfh='df -h'
 alias cp='cp -v'
 alias rm='rm -i'
 
 # Show interactive prompt when using rm -rf
 nuke() {
   FILEPATHS=$@
-  if (whiptail --title "ARE YOU SURE" --yesno --yes-button "NUKE THE FUCKER" --no-button "Nah, forget it" "THIS WILL FORCIBLY DELETE: `echo $FILEPATHS`" 8 78); then
+  if (whiptail --title "ARE YOU SURE" --yesno --yes-button "NUKE THE FUCKER" --no-button "Nah, forget it" "THIS WILL FORCIBLY DELETE: $(echo $FILEPATHS)" 8 78); then
     rm -rfv $FILEPATHS
   else
+    return
+  fi
+}
+
+commit() {
+  LABEL=${1:-Enter the commit message}
+  MSG=$(whiptail --title "GIT COMMIT" --ok-button "COMMIT" --inputbox "$LABEL" 8 78 3>&1 1>&2 2>&3)
+  # A trick to swap stdout and stderr.
+  # Again, you can pack this inside if, but it seems really long for some 80-col terminal users.
+  exitstatus=$?
+
+  # User has selected commit
+  if [ $exitstatus = 0 ]; then
+    if [ "${#MSG}" -le 50 ]; then
+      # Commit msg < 50 chars
+      git commit -m "$MSG"
+    else
+      # Commit msg > 50 chars
+      LABEL="COMMIT MESSAGE LONGER THAN 50 CHARS - Enter shorter message"
+      commit "$LABEL"
+    fi
+  else
+    # User selected cancel
     return
   fi
 }
@@ -50,7 +72,7 @@ alias gpl='git pull'
 
 gclone() {
   git clone git@github.com:$1/$2.git $3
-  }
+}
 
 # Tmux
 alias tls='tmux ls'
@@ -58,7 +80,6 @@ alias tns='tmux new -s $1'
 alias tas='tmux attach-session -t $1'
 alias tks='tmux kill-session -t $1'
 alias tka='tmux kill-session -a'
-
 
 ##################################################
 # SHELL PROMPT
@@ -86,3 +107,4 @@ GIT_PS1_SHOWDIRTYSTATE="true"
 # Define custom prompt
 export PS1="\[$COL_LGREEN\]\A\[$RS\] \[$COL_CYAN\]\u\[$RS\]@\[$RS\]\[$COL_PURPLE\]\h\[$RS\]:[\[$COL_YELLOW\]\w\[$RS\]]:\[$COL_LGREEN\]\$(__git_ps1)\[$RS\] "
 
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
