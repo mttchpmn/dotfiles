@@ -27,7 +27,16 @@ alias cl='clear'
 alias x='exit'
 alias cp='cp -v'
 alias rm='rm -i'
-alias rmf='rm -rf'
+
+# Show interactive prompt when using rm -rf
+nuke() {
+  FILEPATHS=$@
+  if (whiptail --title "NUKE" --yesno "THIS WILL FORCIBLY DELETE: `echo $FILEPATHS`" 8 78); then
+    rm -rfv $FILEPATHS
+  else
+    return
+  fi
+}
 
 # Git
 alias gs='git status'
