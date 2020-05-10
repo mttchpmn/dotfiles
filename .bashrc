@@ -38,10 +38,11 @@ nuke() {
 }
 
 commit() {
+  # Initialize vars so we can modify later if calling function recursively
   LABEL=${1:-Enter the commit message}
-  MSG=$(whiptail --title "GIT COMMIT" --ok-button "COMMIT" --inputbox "$LABEL" 8 78 3>&1 1>&2 2>&3)
-  # A trick to swap stdout and stderr.
-  # Again, you can pack this inside if, but it seems really long for some 80-col terminal users.
+  PLACEHOLDER=${2:-""}
+
+  MSG=$(whiptail --title "GIT COMMIT" --ok-button "COMMIT" --inputbox "$LABEL" 8 78 "$PLACEHOLDER" 3>&1 1>&2 2>&3) # A trick to swap stdout and stderr.
   exitstatus=$?
 
   # User has selected commit
@@ -51,8 +52,9 @@ commit() {
       git commit -m "$MSG"
     else
       # Commit msg > 50 chars
-      LABEL="COMMIT MESSAGE LONGER THAN 50 CHARS - Enter shorter message"
-      commit "$LABEL"
+      LABEL="COMMIT MESSAGE LONGER THAN 50 CHARS ("${#MSG}") - Enter shorter message"
+      # Call function recursively, changing label and placeholder vars
+      commit "$LABEL" "$MSG"
     fi
   else
     # User selected cancel
