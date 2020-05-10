@@ -31,7 +31,7 @@ alias rm='rm -i'
 # Show interactive prompt when using rm -rf
 nuke() {
   FILEPATHS=$@
-  if (whiptail --title "NUKE" --yesno "THIS WILL FORCIBLY DELETE: `echo $FILEPATHS`" 8 78); then
+  if (whiptail --title "ARE YOU SURE" --yesno --yes-button "NUKE THE FUCKER" --no-button "Nah, forget it" "THIS WILL FORCIBLY DELETE: `echo $FILEPATHS`" 8 78); then
     rm -rfv $FILEPATHS
   else
     return
