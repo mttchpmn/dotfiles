@@ -13,6 +13,9 @@ if [ -f ~/.bashdefaults ]; then
   . ~/.bashdefaults
 fi
 
+source ~/.git-completion.bash
+source ~/.git-prompt.sh
+
 # Set default editor
 export EDITOR=vim
 
@@ -26,6 +29,7 @@ alias duh='du -h --max-depth=1'
 alias dfh='df -h'
 alias cp='cp -v'
 alias rm='rm -i'
+alias ts='tree -CshF -L 3'
 
 # Show interactive prompt when using rm -rf
 nuke() {
@@ -110,3 +114,7 @@ GIT_PS1_SHOWDIRTYSTATE="true"
 export PS1="\[$COL_LGREEN\]\A\[$RS\] \[$COL_CYAN\]\u\[$RS\]@\[$RS\]\[$COL_PURPLE\]\h\[$RS\]:[\[$COL_YELLOW\]\w\[$RS\]]:\[$COL_LGREEN\]\$(__git_ps1)\[$RS\] "
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
