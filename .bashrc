@@ -30,6 +30,7 @@ alias dfh='df -h'
 alias cp='cp -v'
 alias rm='rm -i'
 alias ts='tree -CshF -L 3'
+alias cat='bat' # Install with apt / homebrew
 
 # Show interactive prompt when using rm -rf
 nuke() {
