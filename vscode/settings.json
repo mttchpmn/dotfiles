@@ -68,6 +68,10 @@
     {
       "before": ["<leader>", "t"],
       "commands": ["workbench.action.toggleSidebarVisibility"]
+    },
+    {
+      "before": ["<leader>", "o"],
+      "commands": ["workbench.action.quickOpen"]
     }
   ],
   "vim.handleKeys": {
