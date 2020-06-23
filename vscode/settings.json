@@ -72,6 +72,26 @@
     {
       "before": ["<leader>", "o"],
       "commands": ["workbench.action.quickOpen"]
+    },
+    {
+      "before": ["<leader>", "'"],
+      "commands": ["editor.toggleFold"]
+    },
+    {
+      "before": ["<leader>", "f"],
+      "commands": ["editor.foldLevel2"]
+    },
+    {
+      "before": ["<leader>", "u"],
+      "commands": ["editor.unfoldAll"]
+    },
+    {
+      "before": ["<leader>", "/"],
+      "commands": ["editor.action.commentLine"]
+    },
+    {
+      "before": ["<leader>", "q"],
+      "commands": [":nohlsearch"]
     }
   ],
   "vim.handleKeys": {
