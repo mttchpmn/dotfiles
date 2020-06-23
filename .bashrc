@@ -70,8 +70,10 @@ commit() {
 # Git
 alias gs='git status'
 alias ga='git add'
+alias gap='git add -p'
 alias gd='git diff'
 alias gc='git commit -m'
+alias gl='git log'
 alias gco='git checkout $1'
 alias gcb='git checkout -b $1'
 alias gps='git push'
@@ -79,6 +81,13 @@ alias gpl='git pull'
 
 gclone() {
   git clone git@github.com:$1/$2.git $3
+}
+
+# Clubware commit - Gets ticket ID from current Git branch and creates a commit that prefixes the commit message with ticket ID
+# Usage: `cwc Do the thing`
+cwc() {
+  TICKET_ID=$(git rev-parse --abbrev-ref HEAD | grep -Eo "CRMWEB-[0-9]{4}")
+  git commit -m "[$TICKET_ID] $1"
 }
 
 # Tmux
