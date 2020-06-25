@@ -29,6 +29,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   // Vim Setup -------------------------------------------------------------------
+  "editor.lineNumbers": "relative",
   "vim.leader": "<space>",
   "vim.easymotion": true,
   "vim.incsearch": true,

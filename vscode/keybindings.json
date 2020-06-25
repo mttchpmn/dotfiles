@@ -32,6 +32,10 @@
     "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
   },
   {
+    "key": "alt+;",
+    "command": "workbench.action.terminal.toggleTerminal"
+  },
+  {
     "key": "alt+j",
     "command": "workbench.action.terminal.focusNext"
   },
