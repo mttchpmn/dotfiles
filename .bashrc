@@ -120,8 +120,15 @@ GIT_PS1_SHOWDIRTYSTATE="true"
 #GIT_PS1_SHOWUPSTREAM="auto"
 #GIT_PS1_STATESEPARATOR="  "
 
+TIME="\[$COL_LGREEN\]\A\[$RS\]"
+USER="\[$COL_CYAN\]\u\[$RS\]"
+HOST="\[$COL_PURPLE\]\h\[$RS\]"
+DIR="\[$COL_YELLOW\]\w\[$RS\]"
+GIT="\[$COL_LGREEN\]\$(__git_ps1)\[$RS\]"
+NEWLINE="\\n$ "
+
 # Define custom prompt
-export PS1="\[$COL_LGREEN\]\A\[$RS\] \[$COL_CYAN\]\u\[$RS\]@\[$RS\]\[$COL_PURPLE\]\h\[$RS\]:[\[$COL_YELLOW\]\w\[$RS\]]:\[$COL_LGREEN\]\$(__git_ps1)\[$RS\] "
+export PS1="$TIME $USER@$HOST:[$DIR]$GIT $NEWLINE"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
