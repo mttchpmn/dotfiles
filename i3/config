@@ -13,7 +13,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 
 # Set background image
-exec --no-startup-id feh --bg-fill ~/desktop.jpg
+exec --no-startup-id feh --bg-fill ~/cyberpunk-car.jpg
 
 # Remove title bars (needed to set window gaps)
 for_window [class=".*"] border pixel 2
@@ -24,7 +24,7 @@ gaps outer 5
 
 # Set i3 colors
 # class                 border  backgr. text    indicator child_border
-client.focused          #f54242 #f54242 #ffffff #2e9ef4   #bd93f9
+client.focused          #f54242 #f54242 #ffffff #2e9ef4   #d300c4
 client.focused_inactive #333333 #5f676a #ffffff #484e50   #44475a
 client.unfocused        #333333 #222222 #888888 #292d2e   #222222
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
@@ -176,10 +176,10 @@ bar {
         font pango: FiraCode, Ionicons
         position top
         colors {
-                background #282a36
-                statusline #282a36
+                background #261d45
+                statusline #0abdc6
 
-                focused_workspace  #f8f8f2 #bd93f9
+                focused_workspace  #261d45 #0abdc6
                 active_workspace   #f8f8f2 #44475a
                 inactive_workspace #44475a #282a36
                 urgent_workspace   #f8f8f2 #ff5555

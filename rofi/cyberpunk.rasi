@@ -6,11 +6,11 @@
 * {
     foreground:                  #261d45;
     input-foreground:           #261d45;
-    normal-foreground:           #00ffc8;
+    normal-foreground:           #0abdc6;
     urgent-foreground:           rgba ( 218, 66, 129, 100 % );
-    active-foreground:           #00ffc8;
+    active-foreground:           #0abdc6;
     selected-normal-foreground:  #261d45;
-    alternate-normal-foreground: #00ffc8;
+    alternate-normal-foreground: #0abdc6;
     selected-active-foreground:  #261d45;
     selected-urgent-foreground:  rgba ( 137, 6, 97, 100 % );
     alternate-urgent-foreground: @urgent-foreground;
