@@ -7,8 +7,9 @@ configuration {
 	location: 0;
 	padding: 18;
 	hide-scrollbar: true;
-	show-icons: true;
-	icon-theme: "Papirus";
+	show-icons: false;
+	icon-theme: "Suru++";
+	theme: "cyberpunk";
 /*	bw: 1;*/
 /*	yoffset: 0;*/
 /*	xoffset: 0;*/
@@ -53,7 +54,6 @@ configuration {
 /*	window-format: "{w}    {c}   {t}";*/
 /*	click-to-exit: true;*/
 /*	show-match: true;*/
-/*	theme: ;*/
 /*	color-normal: ;*/
 /*	color-urgent: ;*/
 /*	color-active: ;*/
