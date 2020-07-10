@@ -22,7 +22,7 @@ battery 0 {
 
 wireless wlp59s0 {
         format_up = "<span background='#d300c4' foreground='#261d45'> &#xf18a; </span><span background='#261d45'> %ip %essid %bitrate</span>"
-        format_down = "<span background='#ff5555'> &#xf166; </span><span background='#261d45'> Disconnected </span>"
+        format_down = "<span background='#ff5555' foreground='#261d45'> &#xf166; </span><span background='#261d45'> Disconnected </span>"
         separator = false
 }
 
