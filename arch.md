@@ -213,7 +213,7 @@ visudo
 ### Install core packages and software
 
 ```shell
-sudo pacman -S git vi networkmanager openssh htop bat tmux man i3-gaps i3status termite code-oss firefox rofi ranger thunar feh ntpd
+sudo pacman -S git vi networkmanager openssh htop bat tmux man i3-gaps i3status i3lock termite code-oss firefox rofi ranger thunar feh ntpd
 ```
 
 ### Configure and connect to Wifi
