@@ -1,6 +1,8 @@
 # Arch Install on XPS 9570
 
-## Installation
+## Install Base Arch System
+
+Boot into Live Arch USB and enter the command line
 
 ### Connect to wifi
 
@@ -28,7 +30,9 @@ timedatectl set-ntp true
 timedatectl status
 ```
 
-### Partition Drive
+### Partition Drives
+
+Create and format the HDD partitions to install Arch. Note that we'll use a 512M partition for EFI, and allocate all remaining space to the OS. We'll use a SwapFile rather than a Swap Partition.
 
 ```shell
 
@@ -36,7 +40,6 @@ timedatectl status
 fdisk -l
 
 # Format partitions - THIS ERASES ALL DATA
-# Note - we'll use a 512M partition for EFI, give all remaining space to / and use a swapfile instead of swap partition
 
 # Enter partitioning mode
 fdisk /dev/nvme0n1
@@ -74,6 +77,8 @@ lsblk # Or fdisk -l
 
 ### Create Filesystem
 
+Format our newly created partitions
+
 ```shell
 # Create EFI fs
 mkfs.fat -F32 /dev/nvme0n1p1
@@ -83,6 +88,8 @@ mkfs.ext4 /dev/nvme0n1p2
 ```
 
 ### Mount filesystems
+
+Mount our new patitions
 
 ```shell
 # Mount root
@@ -94,6 +101,8 @@ mount /dev/nvme0n1p1 /mnt/efi
 ```
 
 ### Configure Mirrorlist
+
+Configure the mirrorlist for Pacman to use. Note - this greatly speeds up the PacStrap process.
 
 ```shell
 # Update pacman
@@ -111,9 +120,11 @@ reflector -c "NZ" -f 12 -l 10 -n 12 --save /etc/pacman.d/mirrorlist
 
 ### Install System
 
+Install the base Arch System onto our new filesystem.
+
 ```shell
 # Bootstrap system and install packages
-pacstrap /mnt base linux linux-firmware sudo vim nano
+pacstrap /mnt base linux linux-firmware sudo vim nano ssh
 
 # Generate fstab file
 genfstab -U /mnt >> /mnt/etc/fstab
@@ -121,7 +132,11 @@ genfstab -U /mnt >> /mnt/etc/fstab
 
 ## Configure System
 
+Now that the Arch OS is installed, let's configure it further before rebooting back into the system itself.
+
 ### Login and Configure
+
+Change root (chroot) into the new system to configure it.
 
 ```shell
 # Change into new system
@@ -151,9 +166,6 @@ vim /etc/hosts
 
 # Set root password
 passwd
-
-# Install packages needed for wifi setup
-pacman -S networkmanager
 ```
 
 ### Install Boot Loader
@@ -181,6 +193,8 @@ umount -R /mnt
 
 ### Setup New System
 
+After rebooting (and removing installation media) we are inside our new system as root and can setup users and packages.
+
 ```shell
 
 # Create new user
@@ -194,21 +208,33 @@ passwd myUser
 visudo
 
 # Reboot and login as new user
+```
 
-# Install missing packages
-sudo pacman -S git vi openssh htop bat tmux man
+### Install core packages and software
 
+```shell
+sudo pacman -S git vi networkmanager openssh htop bat tmux man i3-gaps i3status termite code-oss firefox rofi ranger thunar feh ntpd
+```
+
+### Configure and connect to Wifi
+
+```shell
 # Start netwprk manager on boot
 systemctl enable NetworkManager.service
+
+# Also start immediately
+systemctl start NetworkManager.service
 
 # List wifi networks
 nmcli device wifi list
 
 # Connect to wifi
 nmcli device wifi connect myNetwork password myPassword
+```
 
-# Install graphical environment
+### Configure graphical environment
 
+```shell
 # List cards
 lspci | grep -e VGA -e 3D
 
@@ -216,12 +242,8 @@ lspci | grep -e VGA -e 3D
 sudo pacman -S xf86-video-intel
 sudo pacman -S xf86-video-nouveau # NVIDIA
 
-# Install display server and wm
-sudo pacman -S xorg-server xorg-xinit xrdb i3-gaps i3status
-
-# Install and start display manager (optional)
-sudo pacman -s lightdm lightdm-gtk-greeter
-systemctl enable lightdm
+# Install display server
+sudo pacman -S xorg-server xorg-xinit xrdb
 
 # If not using display manager add the below line to .bash_profile
 startx

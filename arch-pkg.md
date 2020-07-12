@@ -21,3 +21,4 @@
 - ranger
 - thunar
 - unzip
+- ntpd
