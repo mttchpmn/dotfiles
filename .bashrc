@@ -78,6 +78,7 @@ alias gco='git checkout $1'
 alias gcb='git checkout -b $1'
 alias gps='git push'
 alias gpl='git pull'
+alias unstage='git restore --staged'
 
 gclone() {
   git clone git@github.com:$1/$2.git $3
