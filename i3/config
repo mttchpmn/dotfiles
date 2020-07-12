@@ -82,6 +82,9 @@ bar {
 # Helper function to refresh status bar
 set $refresh_i3status killall -SIGUSR1 i3status
 
+# Lock screen
+bindsym $mod+Shift+o exec i3lock -i ~/dotfiles/lock.png
+
 # Configure volume keys
 bindsym XF86AudioRaiseVolume exec amixer set Master 5%+ && $refresh_i3status
 bindsym XF86AudioLowerVolume exec amixer set Master 5%- && $refresh_i3status
