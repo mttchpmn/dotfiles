@@ -23,7 +23,8 @@ export EDITOR=vim
 # ALIASES
 
 # Utility
-alias cl='clear'
+alias c='clear'
+alias r='reset'
 alias x='exit'
 alias duh='du -h --max-depth=1'
 alias dfh='df -h'
