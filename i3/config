@@ -1,19 +1,38 @@
-# i3 config file (v4)
-#
-# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+#  mttchpmn
+#      _ _____                    __ _       
+#     (_)___ /    ___ ___  _ __  / _(_) __ _ 
+#     | | |_ \   / __/ _ \| '_ \| |_| |/ _` |
+#     | |___) | | (_| (_) | | | |  _| | (_| |
+#     |_|____/   \___\___/|_| |_|_| |_|\__, |
+#                                      |___/ 
 
-# Use ALT for mod key
+##################################################
+# Base setup
+
+# Set modifier key (Alt)
 set $mod Mod1
 
 # Set font
 font pango:DejaVu Sans Mono 12
 
-# Startup apps
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+
+##################################################
+# Startup Apps
+
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 
-# Set background image
-exec --no-startup-id feh --bg-fill ~/desktop.jpg
+##################################################
+# Theme and Appearance
 
 # Remove title bars (needed to set window gaps)
 for_window [class=".*"] border pixel 2
@@ -22,9 +41,16 @@ for_window [class=".*"] border pixel 2
 gaps inner 20
 gaps outer 5
 
-# Set i3 colors
+# Set background image
+exec --no-startup-id feh --bg-fill ~/cyberpunk-car.jpg
+
+# Constrain floating window sizes (fixes HIDPI file dialog issue)
+floating_maximum_size 1600x900
+floating_minimum_size 75x50
+
+# Set colors
 # class                 border  backgr. text    indicator child_border
-client.focused          #f54242 #f54242 #ffffff #2e9ef4   #bd93f9
+client.focused          #f54242 #f54242 #ffffff #2e9ef4   #d300c4
 client.focused_inactive #333333 #5f676a #ffffff #484e50   #44475a
 client.unfocused        #333333 #222222 #888888 #292d2e   #222222
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
@@ -32,56 +58,68 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 client.background       #261d45
 
-# Use pactl to adjust volume in PulseAudio.
-set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+        status_command i3status
+        height 45
+        font pango: FiraCode, Ionicons
+        position top
+        colors {
+                background #261d45
+                statusline #0abdc6
 
-# Keybindings
+                focused_workspace  #261d45 #0abdc6
+                active_workspace   #f8f8f2 #44475a
+                inactive_workspace #44475a #282a36
+                urgent_workspace   #f8f8f2 #ff5555
+    }
+}
+
+##################################################
+# Key bindings
+
+# Helper function to refresh status bar
+set $refresh_i3status killall -SIGUSR1 i3status
+
+# Lock screen
+bindsym $mod+Shift+o exec i3lock -i ~/dotfiles/lock.png
+
+# Configure volume keys
+bindsym XF86AudioRaiseVolume exec amixer set Master 5%+ && $refresh_i3status
+bindsym XF86AudioLowerVolume exec amixer set Master 5%- && $refresh_i3status
+bindsym XF86AudioMute exec amixer set Master toggle && $refresh_i3status
+
+# Configure brightness keys
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
+# Start terminal
 bindsym $mod+Return exec termite
-
-# kill focused window
-bindsym $mod+Shift+q kill
-
-# Constrain floating window sizes (fixes HIDPI file dialog issue)
-floating_maximum_size 1600x900
-floating_minimum_size 75x50
 
 # App launcher
 bindsym $mod+d exec rofi -show drun
 
-# change focus
+# Kill focused window
+bindsym $mod+Shift+q kill
+
+# Change focused window
 bindsym $mod+Shift+h focus left
 bindsym $mod+Shift+j focus down
 bindsym $mod+Shift+k focus up
 bindsym $mod+Shift+l focus right
 
-# move focused window
+# Move focused window
 bindsym $mod+Ctrl+h move left
 bindsym $mod+Ctrl+j move down
 bindsym $mod+Ctrl+k move up
 bindsym $mod+Ctrl+l move right
 
-# split in horizontal orientation
-# bindsym $mod+h split h
-
-# split in vertical orientation
-bindsym $mod+v split v
-
-# enter fullscreen mode for the focused container
+# Enter fullscreen mode for the focused container
 bindsym $mod+Shift+f fullscreen toggle
-
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -94,6 +132,20 @@ bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
+
+# Split in horizontal orientation
+# bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+##################################################
+# Workspaces
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -108,7 +160,9 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-# switch to workspace
+# Switch to workspace
+bindsym $mod+Shift+Ctrl+h workspace prev
+bindsym $mod+Shift+Ctrl+l workspace next
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
 bindsym $mod+3 workspace number $ws3
@@ -131,15 +185,6 @@ bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
-
-# reload the configuration file
-bindsym $mod+Shift+c reload
-
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -167,21 +212,3 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-        status_command i3status
-        height 45
-        font pango: FiraCode, Ionicons
-        position top
-        colors {
-                background #282a36
-                statusline #282a36
-
-                focused_workspace  #f8f8f2 #bd93f9
-                active_workspace   #f8f8f2 #44475a
-                inactive_workspace #44475a #282a36
-                urgent_workspace   #f8f8f2 #ff5555
-    }
-}
