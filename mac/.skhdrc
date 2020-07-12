@@ -44,6 +44,10 @@ ctrl + alt - j : yabai -m window --swap south
 ctrl + alt - k : yabai -m window --swap north
 ctrl + alt - l : yabai -m window --swap east
 
+# Move between workspaces
+shift + alt + ctrl - h : yabai -m space --focus prev
+shift + alt + ctrl - l : yabai -m space --focus next
+
 # Send Window to Space and shift focus to space with shift+cmd+num
 shift + cmd - 1 : yabai -m window --space  1; yabai -m space --focus 1
 shift + cmd - 2 : yabai -m window --space  2; yabai -m space --focus 2
@@ -64,4 +68,4 @@ ctrl + cmd - 2  : yabai -m window --display 2; yabai -m display --focus 2
 
 ctrl + alt - t : open -a /Applications/iTerm.app
 ctrl + alt - c : open -a /Applications/Visual\ Studio\ Code.app
-ctrl + alt - g : open -a /Applications/Google\ Chrome.app
+ctrl + alt - g : open -a /Applications/Firefox.app
