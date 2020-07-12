@@ -268,3 +268,29 @@ if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]
   exec startx
 fi
 ```
+
+### Configure sound
+
+```shell
+# Install packages
+sudo pacman -s alsa-utils
+
+# Visually set audio levels
+alsamixer
+
+# Set up key bindings (add to i3 config)
+bindsym XF86AudioRaiseVolume exec amixer set Master 5%+ && $refresh_i3status
+bindsym XF86AudioLowerVolume exec amixer set Master 5%- && $refresh_i3status
+bindsym XF86AudioMute exec amixer set Master toggle && $refresh_i3status
+```
+
+### Configure backlight
+
+```shell
+# Install package (check Arch wiki for other package options)
+sudo pacman -S xbacklight
+
+# Add keybindings to i3 config
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20
+```
