@@ -32,6 +32,7 @@ alias cp='cp -v'
 alias rm='rm -i'
 alias ts='tree -CshF -L 3'
 alias cat='bat' # Install with apt / homebrew
+alias grep='grep -Hn --color=always'
 
 # Show interactive prompt when using rm -rf
 nuke() {
@@ -72,7 +73,9 @@ commit() {
 alias gs='git status'
 alias ga='git add'
 alias gap='git add -p'
-alias gd='git diff'
+alias gd='git diff --color-moved'
+alias gdc='git diff --compact-summary'
+alias gdf='git diff --color | diff-so-fancy' # npm install -g diff-so-fancy
 alias gc='git commit -m'
 alias gl='git log'
 alias gco='git checkout $1'
