@@ -26,6 +26,8 @@ export EDITOR=vim
 alias c='clear'
 alias r='reset'
 alias x='exit'
+alias la='ls -a'
+alias ll='ls -FGalh'
 alias duh='du -h --max-depth=1'
 alias dfh='df -h'
 alias cp='cp -v'
@@ -138,5 +140,5 @@ export PS1="$TIME $USER@$HOST:[$DIR]$GIT $NEWLINE"
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 export NVM_DIR="$HOME/.nvm"
-  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"                                       # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
