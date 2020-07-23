@@ -20,7 +20,7 @@ source ~/.git-prompt.sh
 export EDITOR=vim
 
 ##################################################
-# ALIASES
+# ALIASES AND FUNCTIONS
 
 # Utility
 alias c='clear'
@@ -34,42 +34,16 @@ alias cp='cp -v'
 alias rm='rm -i'
 alias ts='tree -CshF -L 3'
 alias cat='bat' # Install with apt / homebrew
-alias grep='grep -Hn --color=always'
+alias cgrep='grep -Hn --color=always'
 
-# Show interactive prompt when using rm -rf
-nuke() {
-  FILEPATHS=$@
-  if (whiptail --title "ARE YOU SURE" --yesno --yes-button "NUKE THE FUCKER" --no-button "Nah, forget it" "THIS WILL FORCIBLY DELETE: $(echo $FILEPATHS)" 8 78); then
-    rm -rfv $FILEPATHS
-  else
-    return
-  fi
+listport() {
+        lsof -i :$1
 }
 
-commit() {
-  # Initialize vars so we can modify later if calling function recursively
-  LABEL=${1:-Enter the commit message}
-  PLACEHOLDER=${2:-""}
-
-  MSG=$(whiptail --title "GIT COMMIT" --ok-button "COMMIT" --inputbox "$LABEL" 8 78 "$PLACEHOLDER" 3>&1 1>&2 2>&3) # A trick to swap stdout and stderr.
-  exitstatus=$?
-
-  # User has selected commit
-  if [ $exitstatus = 0 ]; then
-    if [ "${#MSG}" -le 50 ]; then
-      # Commit msg < 50 chars
-      git commit -m "$MSG"
-    else
-      # Commit msg > 50 chars
-      LABEL="COMMIT MESSAGE LONGER THAN 50 CHARS ("${#MSG}") - Enter shorter message"
-      # Call function recursively, changing label and placeholder vars
-      commit "$LABEL" "$MSG"
-    fi
-  else
-    # User selected cancel
-    return
-  fi
+killport() {
+        kill $(lsof -t -i :$1)
 }
+
 
 # Git
 alias gs='git status'
@@ -93,7 +67,7 @@ gclone() {
 # Clubware commit - Gets ticket ID from current Git branch and creates a commit that prefixes the commit message with ticket ID
 # Usage: `cwc Do the thing`
 cwc() {
-  TICKET_ID=$(git rev-parse --abbrev-ref HEAD | grep -Eo "CRMWEB-[0-9]{4}")
+  TICKET_ID=$(git rev-parse --abbrev-ref HEAD | \grep -Eo "CRMWEB-[0-9]{4}")
   git commit -m "[$TICKET_ID] $1"
 }
 
