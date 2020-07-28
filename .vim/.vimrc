@@ -119,6 +119,16 @@ let mapleader=","
 " Set jj to send <esc> key
 inoremap jj <esc>
 
+" Create new tab/buffer
+nnoremap<leader>n :tabnew<CR>
+
+" Navigate between tabs
+nnoremap<S-h> :tabprev<CR>
+nnoremap<S-l> :tabnext<CR>
+
+" Launch terminal
+nnoremap<leader>t :vert term<CR>
+
 " Save Vim session (Reopen with `vim -S`)
 nnoremap<leader>s :mksession<CR>
 
