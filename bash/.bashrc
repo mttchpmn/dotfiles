@@ -106,7 +106,7 @@ USER="\[$COL_CYAN\]\u\[$RS\]"
 HOST="\[$COL_PURPLE\]\h\[$RS\]"
 DIR="\[$COL_YELLOW\]\w\[$RS\]"
 GIT="\[$COL_LGREEN\]\$(__git_ps1)\[$RS\]"
-NEWLINE="\\n$ "
+NEWLINE="\\n\[$COL_PURPLE\]$\[$RS\] "
 
 # Define custom prompt
 export PS1="$TIME $USER@$HOST:[$DIR]$GIT $NEWLINE"
