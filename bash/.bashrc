@@ -6,18 +6,22 @@
 #
 
 ##################################################
-# UBUNTU DEFAULTS
-
-# Load defaults if they exist
-if [ -f ~/.bashdefaults ]; then
-  . ~/.bashdefaults
-fi
+# DEFAULTS
 
 source ~/.git-completion.bash
 source ~/.git-prompt.sh
 
 # Set default editor
 export EDITOR=vim
+
+##################################################
+# HISTORY
+
+export HISTSIZE=10000
+export HISTFILESIZE=100000
+export HISTTIMEFORMAT="[%h %d %H:%M:%S] "
+export HISTCONTROL=ignoreboth:erasedups
+export HISTIGNORE="ls:ll:cd*:gs:gd:gdf:gc:gco:gcb:git*:c:r:history"
 
 ##################################################
 # ALIASES AND FUNCTIONS
