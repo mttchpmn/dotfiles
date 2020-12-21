@@ -1,5 +1,5 @@
 {
-  "workbench.colorTheme": "Cyberpunk",
+  "workbench.colorTheme": "Dracula",
   "window.zoomLevel": 0,
   "editor.minimap.enabled": false,
   "explorer.confirmDelete": false,
@@ -8,7 +8,7 @@
   "sync.gist": "518d6764ff764aa24cc1521f3ce819ac",
   "editor.renderWhitespace": "none",
   "debug.node.autoAttach": "off",
-  "explorer.openEditors.visible": 0,
+  "explorer.openEditors.visible": 10,
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "workbench.iconTheme": "vscode-icons",
   "eslint.codeAction.disableRuleComment": {},
@@ -30,6 +30,7 @@
   },
   // Vim Setup -------------------------------------------------------------------
   "editor.lineNumbers": "relative",
+  "vim.statusBarColorControl": true, // Can impact performance due to redraw frequency
   "vim.leader": "<space>",
   "vim.easymotion": true,
   "vim.incsearch": true,
@@ -40,6 +41,12 @@
   "vim.highlightedyank.enable": true,
   "vim.highlightedyank.color": "purple",
   "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "j"],
+      "after": ["<Esc>"]
+    }
+  ],
+  "vim.replaceModeKeyBindings": [
     {
       "before": ["j", "j"],
       "after": ["<Esc>"]
@@ -101,5 +108,70 @@
   },
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "yaml.customTags": [
+    "!And",
+    "!And sequence",
+    "!If",
+    "!If sequence",
+    "!Not",
+    "!Not sequence",
+    "!Equals",
+    "!Equals sequence",
+    "!Or",
+    "!Or sequence",
+    "!FindInMap",
+    "!FindInMap sequence",
+    "!Base64",
+    "!Join",
+    "!Join sequence",
+    "!Cidr",
+    "!Ref",
+    "!Sub",
+    "!Sub sequence",
+    "!GetAtt",
+    "!GetAZs",
+    "!ImportValue",
+    "!ImportValue sequence",
+    "!Select",
+    "!Select sequence",
+    "!Split",
+    "!Split sequence"
+  ],
+  "yaml.validate": false,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "editor.tabSize": 2,
+  "workbench.panel.defaultLocation": "right",
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "vsicons.dontShowNewVersionMessage": true,
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "diffEditor.ignoreTrimWhitespace": true,
+  "workbench.colorCustomizations": {
+    "tab.activeBorderTop": "#fff",
+    "statusBar.background": "#005f5f",
+    "statusBar.noFolderBackground": "#005f5f",
+    "statusBar.debuggingBackground": "#005f5f"
+  },
+  "search.showLineNumbers": true,
+  "search.smartCase": true,
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "projectManager.git.baseFolders": [
+    "~/code/clubware/backend"
+  ],
+  "terminal.external.osxExec": "Alacritty.app",
+  "terminal.explorerKind": "external",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnType": true,
+  "terminal.integrated.scrollback": 5000
 }

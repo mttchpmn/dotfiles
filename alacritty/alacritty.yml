@@ -1,0 +1,5 @@
+# Configuration for Alacritty, the GPU enhanced terminal emulator.
+
+# Dracula color theme
+import:
+  - /Users/matt.c/dotfiles/alacritty/dracula.yml

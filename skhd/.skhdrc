@@ -66,6 +66,7 @@ ctrl + cmd - 2  : yabai -m window --display 2; yabai -m display --focus 2
 # Applications
 ##############################################
 
-ctrl + alt - t : open -a /Applications/iTerm.app
+ctrl + alt - t : open -a /Applications/Alacritty.app
 ctrl + alt - c : open -a /Applications/Visual\ Studio\ Code.app
 ctrl + alt - g : open -a /Applications/Firefox.app
+ctrl + alt - p : open -a /Applications/Postman.app

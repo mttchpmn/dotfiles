@@ -21,16 +21,16 @@
     "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
   },
   // Navigate between tabs with shift+alt+p|n
-  {
-    "key": "shift+h",
-    "command": "workbench.action.previousEditor",
-    "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
-  },
-  {
-    "key": "shift+l",
-    "command": "workbench.action.nextEditor",
-    "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
-  },
+  // {
+  //   "key": "shift+h",
+  //   "command": "workbench.action.previousEditor",
+  //   "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
+  // },
+  // {
+  //   "key": "shift+l",
+  //   "command": "workbench.action.nextEditor",
+  //   "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
+  // },
   {
     "key": "shift+alt+;",
     "command": "workbench.action.toggleMaximizedPanel"
@@ -46,5 +46,17 @@
   {
     "key": "alt+k",
     "command": "workbench.action.terminal.focusPrevious"
-  }
+  },
+  // Move up and down in Command palette and intellisense with Shift + JK
+  {
+    "key": "shift+k",
+    "command": "selectPrevSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+  },
+  {
+    "key": "shift+j",
+    "command": "selectNextSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+  },
+  { "key": "alt+'", "command": "workbench.view.explorer" }
 ]

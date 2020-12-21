@@ -10,6 +10,7 @@
 
 source ~/.git-completion.bash
 source ~/.git-prompt.sh
+source ~/.clubware.sh
 
 # Set default editor
 export EDITOR=vim
@@ -20,13 +21,14 @@ export EDITOR=vim
 export HISTSIZE=10000
 export HISTFILESIZE=100000
 export HISTTIMEFORMAT="[%h %d %H:%M:%S] "
-export HISTCONTROL=ignoreboth:erasedups
-export HISTIGNORE="ls:ll:cd*:gs:gd:gdf:gc:gco:gcb:git*:c:r:history"
+#export HISTCONTROL=ignoreboth:erasedups
+#export HISTIGNORE="ls:ll:cd*:gs:gd:gdf:gc:gco:gcb:git*:c:r:history"
 
 ##################################################
 # ALIASES AND FUNCTIONS
 
 # Utility
+alias h='history'
 alias c='clear'
 alias r='reset'
 alias x='exit'
@@ -120,3 +122,7 @@ export PS1="$TIME $USER@$HOST:[$DIR]$GIT $NEWLINE"
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"                                       # This loads nvm
 [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
+
+# tabtab source for packages
+# uninstall by removing these lines
+[ -f ~/.config/tabtab/__tabtab.bash ] && . ~/.config/tabtab/__tabtab.bash || true
