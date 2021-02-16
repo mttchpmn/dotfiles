@@ -5,9 +5,12 @@ set show-mode-in-prompt on
 # Use vim bindings
 set editing-mode vi
 
+set colored-stats On
+
 # Zsh-like tab completions
 set show-all-if-ambiguous on
 set menu-complete-display-prefix on
+set completion-ignore-case On
 
 # VI COMMAND MODE KEYMAPS ------------------------------
 set keymap vi-command
@@ -21,3 +24,9 @@ set keymap vi-insert
 # Use tab and shift-tab to scroll through completions
 TAB: menu-complete
 "\e[Z]": menu-complete-backward
+
+# Use up and down arrow keys for searching history
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+"\e[C": forward-char
+"\e[D": backward-char
