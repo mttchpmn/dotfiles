@@ -2,4 +2,4 @@
 
 # Dracula color theme
 import:
-  - /Users/matt.c/dotfiles/alacritty/dracula.yml
+  - /home/mttchpmn/dotfiles/alacritty/dracula.yml

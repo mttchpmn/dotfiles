@@ -1,0 +1,13 @@
+configuration {
+	modi: "window,run,ssh,drun";
+	width: 30;
+	lines: 15;
+	columns: 1;
+	font: "mono 28";
+	location: 0;
+	padding: 18;
+	hide-scrollbar: true;
+	show-icons: false;
+	icon-theme: "Suru++";
+	theme: "dracula";
+}
