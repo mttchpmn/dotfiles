@@ -1,5 +1,23 @@
+# INPUT OPTIONS ----------------------------------------
+# Show ins/cmd mode next to prompt
 set show-mode-in-prompt on
+
+# Use vim bindings
 set editing-mode vi
+
+# Zsh-like tab completions
+set show-all-if-ambiguous on
+set menu-complete-display-prefix on
+
+# VI COMMAND MODE KEYMAPS ------------------------------
 set keymap vi-command
+
+# VI INSERT MODE KEYMAPS ------------------------------
 set keymap vi-insert
+
+# Map jj to Esc
 "jj": vi-movement-mode
+
+# Use tab and shift-tab to scroll through completions
+TAB: menu-complete
+"\e[Z]": menu-complete-backward
