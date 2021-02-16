@@ -26,8 +26,8 @@ export EDITOR=vim
 ##################################################
 # HISTORY
 
-export HISTSIZE=10000
-export HISTFILESIZE=100000
+export HISTSIZE=1000000
+export HISTFILESIZE=100000000
 export HISTTIMEFORMAT="[%h %d %H:%M:%S] "
 #export HISTCONTROL=ignoreboth:erasedups
 #export HISTIGNORE="ls:ll:cd*:gs:gd:gdf:gc:gco:gcb:git*:c:r:history"
