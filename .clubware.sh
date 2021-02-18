@@ -1,6 +1,7 @@
 # Aliases for assuming an AWS role
 alias cdr='aws-vault exec cw-dev-read'
 alias cdw='aws-vault exec cw-dev-write'
+alias cpr='aws-vault exec cw-prod-read'
 
 # Alias for connecting to the Reporting DB - Note: VPN must be active
 alias rdb='psql --host reporting-db-dev.clubware-internal.com --dbname reporting-dev --username reporting-fn'
