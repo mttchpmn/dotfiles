@@ -16,8 +16,8 @@ if [ -f ~/.git-prompt.sh ]; then
   source ~/.git-prompt.sh
 fi
 
-if [ -f ~/.clubware.sh ]; then
-  source ~/.clubware.sh
+if [ -f ~/.work.sh ]; then
+  source ~/.work.sh
 fi
 
 # Set default editor

@@ -14,9 +14,6 @@ pacman:
 snap:
 	@snap install code --classic
 	@snap install rider --classic
-	@snap install postman --classic
-	@snap install dotnet-sdk --classic
-	@snap install firefox --classic
 	@snap install slack --classic
 	@snap install teams --classic
 	@snap install spotify --classic
@@ -35,9 +32,9 @@ tmux:
 	@ln -sf $(PWD)/.tmux.conf $(HOME)
 
 git:
-	@ln -sf $(PWD)/git/.git-completion.bash $(HOME)
-	@ln -sf $(PWD)/git/.git-prompt.sh $(HOME)
-	@ln -sf $(PWD)/git/.gitconfig $(HOME)
+	@ln -sf $(PWD)/git/.git-completion.bash $(HOME)/.git-completion.bash
+	@ln -sf $(PWD)/git/.git-prompt.sh $(HOME)/.git-prompt.sh
+	@ln -sf $(PWD)/git/.gitconfig $(HOME)/.gitconfig
 
 node:
 	@curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
@@ -55,4 +52,4 @@ rofi:
 source: bash
 	@source ~/.bashrc
 
-.PHONY: all
+.PHONY: all alacritty rofi git
