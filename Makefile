@@ -9,7 +9,7 @@ sdks: node dotnet
 apps: snap
 
 pacman:
-	sudo pacman -S vim alacritty rofi ranger 
+	sudo pacman -S vim alacritty rofi ranger tree
 
 snap:
 	@snap install code --classic
@@ -38,6 +38,7 @@ git:
 
 node:
 	@curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+	nvm install 14.15.5
 	@npm install --global yarn typescript ts-node
 
 dotnet:
@@ -49,7 +50,10 @@ alacritty:
 rofi:
 	@ln -sf $(PWD)/rofi $(HOME)/.config
 
+folders:
+	mkdir -p $(HOME)/code/work $(HOME)/code/personal
+
 source: bash
 	@source ~/.bashrc
 
-.PHONY: all alacritty rofi git
+.PHONY: all packages dotfiles sdks apps pacman snap bash vim tmux node dotnet alacritty rofi git

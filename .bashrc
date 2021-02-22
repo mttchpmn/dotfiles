@@ -48,6 +48,7 @@ alias cp='cp -v'
 alias rm='rm -i'
 alias ts='tree -CshF -L 3'
 alias cgrep='grep -Hn --color=always'
+alias shutdown='shutdown -h now'
 
 listport() {
         lsof -i :$1
