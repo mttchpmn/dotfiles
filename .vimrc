@@ -35,6 +35,10 @@ set cursorline
 " Set text width
 set textwidth=79
 
+" Always open files to the right, or below current file
+set splitright
+set splitbelow
+
 " Colorise 81st column to keep lines short
 set colorcolumn=81
 
@@ -106,25 +110,16 @@ set ignorecase
 " Switch to case sensitive if query is uppercase
 set smartcase
 
-" Stop highlighting matches with ,+space
-nnoremap <leader><space> :nohlsearch<CR>
+" Stop highlighting matches
+nnoremap <leader>\ :nohlsearch<CR>
 
 
 "#################################################
-" LEADER SHORTCUTS
+" COMMAND REMAPS
 
-" Set leader to comma key
-let mapleader=","
-
-" Set jj to send <esc> key
-inoremap jj <esc>
-
-" Create new tab/buffer
-nnoremap<leader>n :tabnew<CR>
-
-" Navigate between tabs
-nnoremap<S-h> :tabprev<CR>
-nnoremap<S-l> :tabnext<CR>
+" Set leader to space key
+nnoremap <SPACE> <Nop>
+let mapleader=" "
 
 " Launch terminal
 nnoremap<leader>t :vert term<CR>
@@ -132,14 +127,45 @@ nnoremap<leader>t :vert term<CR>
 " Save Vim session (Reopen with `vim -S`)
 nnoremap<leader>s :mksession<CR>
 
-" Make vertical split and switch into it
-nnoremap<leader>w <C-w>v<C-w>l
+" Make vertical split and switch into it (VSCode style)
+nnoremap<C-\> <C-w>v<C-w>l
 
-" Use Ctrl+hjkl keys to move between splits
+" ALternative tab commands
+nnoremap th :tabnext<CR>
+nnoremap tl :tabprev<CR>
+nnoremap tn :tabnew<CR>
+nnoremap tx :tabclose<CR>
+
+" Set jj to send <esc> key
+inoremap jj <esc>
+
+
+" Use Ctrl+hjkl keys to move between windows
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+" Split file right
+nnoremap <leader>v <C-w>v
+
+" Split file below
+nnoremap <leader>s <C-w>s
+
+" Open new file right
+nnoremap <leader>n :vnew<CR>
+
+" Open new file below
+nnoremap <leader><S-n> :new<CR>
+
+" Quit current window
+nnoremap <leader>q :quit<CR>
+
+" Open file
+nnoremap <C-o> :e<space>
+
+" Open directory
+nnoremap <C-S-o> :Ex<CR>
 
 
 "#################################################
