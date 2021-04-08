@@ -133,38 +133,7 @@ DIR="$YELLOW$ITALIC\w$RESET$DIM"
 GIT="$LGREEN\$(__git_ps1)$RESET$DIM"
 
 # Define custom prompt
-# export PS1="$DIM┏┓$TIME┏━┫$USER@$HOST┣━┓$DIR┏━$GIT\n🡺$RESET "
-export PS1="$DIM┏┫$TIME┣━━┫$USER@$HOST┣━━┫$DIR┣━$GIT\n🡺$RESET "
-
-# # Color aliases
-# COL_YELLOW="\033[0;33m"
-# COL_GREEN="\033[0;32m"
-# COL_LGREEN="\033[1;32m"
-# COL_PURPLE="\033[0;35m"
-# COL_BLUE="\033[0;34m"
-# COL_CYAN="\033[0;36m"
-# COL_WHITE="\033[0;37m"
-# COL_BLACK="\033[0;30m"
-
-# BG_WHITE="\033[0;47m"
-
-# RS="\033[0m" # Reset colors
-
-# # Git prompt setup
-# GIT_PS1_SHOWDIRTYSTATE="true"
-# #GIT_PS1_SHOWUNTRACKEDFILES="true"
-# #GIT_PS1_SHOWUPSTREAM="auto"
-# #GIT_PS1_STATESEPARATOR="  "
-
-# TIME="\[$COL_LGREEN\]\A\[$RS\]"
-# USER="\[$COL_CYAN\]\u\[$RS\]"
-# HOST="\[$COL_PURPLE\]\h\[$RS\]"
-# DIR="\[$COL_YELLOW\]\w\[$RS\]"
-# GIT="\[$COL_LGREEN\]\$(__git_ps1)\[$RS\]"
-# NEWLINE="\\n\[$COL_PURPLE\]$\[$RS\] "
-
-# # Define custom prompt
-# export PS1="$TIME $USER@$HOST:[$DIR]$GIT $NEWLINE"
+export PS1="$DIM┏[$TIME]━━┫ $USER@$HOST ┣━━[$DIR]$GIT\n🡺$RESET "
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
