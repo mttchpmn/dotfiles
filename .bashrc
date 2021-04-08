@@ -127,13 +127,21 @@ GIT_PS1_SHOWDIRTYSTATE="true"
 #GIT_PS1_STATESEPARATOR="  "
 
 TIME="$GREEN\t$RESET$DIM"
-USER="$CYAN\u$RESET$DIM"
+USER="$CYAN$ITALIC\u$RESET$DIM"
 HOST="$PURPLE$BOLD\h$RESET$DIM"
-DIR="$YELLOW$ITALIC\w$RESET$DIM"
+DIR="$YELLOW$BOLD\w$RESET$DIM"
 GIT="$LGREEN\$(__git_ps1)$RESET$DIM"
 
+function lastCmd() {
+  if [[ "$?" -ne "0" ]]; then
+    echo -e "✘"
+  else
+    echo -e "✔"
+  fi
+}
+
 # Define custom prompt
-export PS1="$DIM┏[$TIME]━━┫ $USER@$HOST ┣━━[$DIR]$GIT\n🡺$RESET "
+export PS1="$DIM┏[$TIME]━━[$USER@$HOST]━━┫ $DIR ┣━━[\$(lastCmd)]$GIT\n🡺$RESET "
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
