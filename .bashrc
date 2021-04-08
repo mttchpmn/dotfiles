@@ -24,6 +24,13 @@ fi
 export EDITOR=vim
 
 ##################################################
+# PATH
+
+# Dotnet
+export PATH=$PATH:$HOME/dotnet:$HOME/.dotnet/tools
+export DOTNET_ROOT=$HOME/dotnet
+
+##################################################
 # HISTORY
 
 export HISTSIZE=1000000
@@ -100,28 +107,17 @@ CYAN="\[\e[0;36m\]"
 WHITE="\[\e[0;37m\]"
 BLACK="\[\e[0;30m\]"
 BG_WHITE="\[\e[0;47m\]"
-RESET_COLOR="\[\e[0m\]" # Reset colors
+COLOR_RESET="\[\e[0m\]" # Reset colors
 
 # Text
-ITALIC="\[\e[3m\]"
-ITALIC_END="\e[23m"
+ITALIC="\e[3m"
 BOLD="\e[1m"
-BOLD_END="\e[23m"
-RESET_TEXT="\[\e(B\e[m\]"
+DIM="\e[2m"
+BLINK="\e[5m"
+TEXT_RESET="\e(B\e[m"
 
-# Prompt variables
-TIME="\t"
-USER="\u"
-HOST="\h"
-DIR="\w"
-GIT="\$(__git_ps1)"
-CHAR="λ"
-
-# Styled chunks
-TIME_CHUNK="$GREEN$TIME$RESETCOLOR"
-USER_CHUNK="$CYAN$USER"
-
-
+# Reset all
+RESET="$TEXT_RESET$COLOR_RESET"
 
 
 # Git prompt setup
@@ -130,16 +126,22 @@ GIT_PS1_SHOWDIRTYSTATE="true"
 #GIT_PS1_SHOWUPSTREAM="auto"
 #GIT_PS1_STATESEPARATOR="  "
 
-# TIME="\[$COL_LGREEN\]\t\[$RS\]"
-# USER="\[$COL_CYAN\]\u\[$RS\]"
-# HOST="\[$COL_PURPLE\]$BOLD\h$RESET_TEXT\[$RS\]"
-# DIR="\[$COL_YELLOW\]\w\[$RS\]"
-# GIT="\[$COL_LGREEN\]\$(__git_ps1)\[$RS\]"
-# NEWLINE="\\n\[$COL_PURPLE\]λ\[$RS\] "
+TIME="$GREEN\t$RESET$DIM"
+USER="$CYAN$ITALIC\u$RESET$DIM"
+HOST="$PURPLE$BOLD\h$RESET$DIM"
+DIR="$YELLOW$BOLD\w$RESET$DIM"
+GIT="$LGREEN\$(__git_ps1)$RESET$DIM"
+
+function lastCmd() {
+  if [[ "$?" -ne "0" ]]; then
+    echo -e "✘"
+  else
+    echo -e "✔"
+  fi
+}
 
 # Define custom prompt
-export PS1="$TIME_CHUNK $USER_CHUNK@$HOST:[$DIR]$GIT $NEWLINE"
-# export PS1="$TIMECHUNK"
+export PS1="$DIM┏[$TIME]━━[$USER@$HOST]━━┫ $DIR ┣━━[\$(lastCmd)$DIM]$GIT\n🡺$RESET "
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
