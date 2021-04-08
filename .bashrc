@@ -24,6 +24,13 @@ fi
 export EDITOR=vim
 
 ##################################################
+# PATH
+
+# Dotnet
+export PATH=$PATH:$HOME/dotnet:$HOME/.dotnet/tools
+export DOTNET_ROOT=$HOME/dotnet
+
+##################################################
 # HISTORY
 
 export HISTSIZE=1000000
@@ -90,19 +97,28 @@ alias tka='tmux kill-session -a'
 ##################################################
 # SHELL PROMPT
 
-# Color aliases
-COL_YELLOW="\033[0;33m"
-COL_GREEN="\033[0;32m"
-COL_LGREEN="\033[1;32m"
-COL_PURPLE="\033[0;35m"
-COL_BLUE="\033[0;34m"
-COL_CYAN="\033[0;36m"
-COL_WHITE="\033[0;37m"
-COL_BLACK="\033[0;30m"
+# Colors
+YELLOW="\[\e[0;33m\]"
+GREEN="\[\e[0;32m\]"
+LGREEN="\[\e[1;32m\]"
+PURPLE="\[\e[0;35m\]"
+BLUE="\[\e[0;34m\]"
+CYAN="\[\e[0;36m\]"
+WHITE="\[\e[0;37m\]"
+BLACK="\[\e[0;30m\]"
+BG_WHITE="\[\e[0;47m\]"
+COLOR_RESET="\[\e[0m\]" # Reset colors
 
-BG_WHITE="\033[0;47m"
+# Text
+ITALIC="\e[3m"
+BOLD="\e[1m"
+DIM="\e[2m"
+BLINK="\e[5m"
+TEXT_RESET="\e(B\e[m"
 
-RS="\033[0m" # Reset colors
+# Reset all
+RESET="$TEXT_RESET$COLOR_RESET"
+
 
 # Git prompt setup
 GIT_PS1_SHOWDIRTYSTATE="true"
@@ -110,15 +126,45 @@ GIT_PS1_SHOWDIRTYSTATE="true"
 #GIT_PS1_SHOWUPSTREAM="auto"
 #GIT_PS1_STATESEPARATOR="  "
 
-TIME="\[$COL_LGREEN\]\A\[$RS\]"
-USER="\[$COL_CYAN\]\u\[$RS\]"
-HOST="\[$COL_PURPLE\]\h\[$RS\]"
-DIR="\[$COL_YELLOW\]\w\[$RS\]"
-GIT="\[$COL_LGREEN\]\$(__git_ps1)\[$RS\]"
-NEWLINE="\\n\[$COL_PURPLE\]$\[$RS\] "
+TIME="$GREEN\t$RESET$DIM"
+USER="$CYAN\u$RESET$DIM"
+HOST="$PURPLE$BOLD\h$RESET$DIM"
+DIR="$YELLOW$ITALIC\w$RESET$DIM"
+GIT="$LGREEN\$(__git_ps1)$RESET$DIM"
 
 # Define custom prompt
-export PS1="$TIME $USER@$HOST:[$DIR]$GIT $NEWLINE"
+# export PS1="$DIM┏┓$TIME┏━┫$USER@$HOST┣━┓$DIR┏━$GIT\n🡺$RESET "
+export PS1="$DIM┏┫$TIME┣━━┫$USER@$HOST┣━━┫$DIR┣━$GIT\n🡺$RESET "
+
+# # Color aliases
+# COL_YELLOW="\033[0;33m"
+# COL_GREEN="\033[0;32m"
+# COL_LGREEN="\033[1;32m"
+# COL_PURPLE="\033[0;35m"
+# COL_BLUE="\033[0;34m"
+# COL_CYAN="\033[0;36m"
+# COL_WHITE="\033[0;37m"
+# COL_BLACK="\033[0;30m"
+
+# BG_WHITE="\033[0;47m"
+
+# RS="\033[0m" # Reset colors
+
+# # Git prompt setup
+# GIT_PS1_SHOWDIRTYSTATE="true"
+# #GIT_PS1_SHOWUNTRACKEDFILES="true"
+# #GIT_PS1_SHOWUPSTREAM="auto"
+# #GIT_PS1_STATESEPARATOR="  "
+
+# TIME="\[$COL_LGREEN\]\A\[$RS\]"
+# USER="\[$COL_CYAN\]\u\[$RS\]"
+# HOST="\[$COL_PURPLE\]\h\[$RS\]"
+# DIR="\[$COL_YELLOW\]\w\[$RS\]"
+# GIT="\[$COL_LGREEN\]\$(__git_ps1)\[$RS\]"
+# NEWLINE="\\n\[$COL_PURPLE\]$\[$RS\] "
+
+# # Define custom prompt
+# export PS1="$TIME $USER@$HOST:[$DIR]$GIT $NEWLINE"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
