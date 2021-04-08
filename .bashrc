@@ -36,6 +36,8 @@ export HISTTIMEFORMAT="[%h %d %H:%M:%S] "
 # ALIASES AND FUNCTIONS
 
 # Utility
+alias bashrc='vim ~/.bashrc'
+alias vimrc='vim ~/.vimrc'
 alias h='history'
 alias c='clear'
 alias r='reset'

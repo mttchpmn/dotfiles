@@ -1,19 +1,48 @@
 # INPUT OPTIONS ----------------------------------------
+
+# Include system inputrc to avoid weird behaviour
+$include /etc/inputrc
+
+# Don't show control characters (^C) on screen
+set echo-control-characters off
+
 # Show ins/cmd mode next to prompt
 set show-mode-in-prompt on
 
 # Use vim bindings
 set editing-mode vi
 
+# Use colors and visual cues
 set colored-stats On
+set visible-stats On
+set mark-symlinked-directories On
+set colored-completion-prefix On
+set menu-complete-display-prefix On
 
 # Zsh-like tab completions
 set show-all-if-ambiguous on
 set menu-complete-display-prefix on
 set completion-ignore-case On
 
+# Set mode prompt
+$if term=linux
+	set vi-ins-mode-string [INS]\1\e[?0c\2
+	set vi-cmd-mode-string [CMD]\1\e[?8c\2
+$else
+	set vi-ins-mode-string [INS]\1\e[6 q\2
+	set vi-cmd-mode-string [CMD]\1\e[2 q\2
+$endif
+
 # VI COMMAND MODE KEYMAPS ------------------------------
 set keymap vi-command
+
+k: history-search-backward
+j: history-search-forward
+
+# Macros
+
+# Helper macro to make 'ciw' behave like it does in Vim
+"ciw": "bcw"
 
 # VI INSERT MODE KEYMAPS ------------------------------
 set keymap vi-insert
@@ -30,3 +59,6 @@ TAB: menu-complete
 "\e[B": history-search-forward
 "\e[C": forward-char
 "\e[D": backward-char
+
+# Macros
+
