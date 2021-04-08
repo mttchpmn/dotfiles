@@ -90,19 +90,39 @@ alias tka='tmux kill-session -a'
 ##################################################
 # SHELL PROMPT
 
-# Color aliases
-COL_YELLOW="\033[0;33m"
-COL_GREEN="\033[0;32m"
-COL_LGREEN="\033[1;32m"
-COL_PURPLE="\033[0;35m"
-COL_BLUE="\033[0;34m"
-COL_CYAN="\033[0;36m"
-COL_WHITE="\033[0;37m"
-COL_BLACK="\033[0;30m"
+# Colors
+YELLOW="\[\e[0;33m\]"
+GREEN="\[\e[0;32m\]"
+LGREEN="\[\e[1;32m\]"
+PURPLE="\[\e[0;35m\]"
+BLUE="\[\e[0;34m\]"
+CYAN="\[\e[0;36m\]"
+WHITE="\[\e[0;37m\]"
+BLACK="\[\e[0;30m\]"
+BG_WHITE="\[\e[0;47m\]"
+RESET_COLOR="\[\e[0m\]" # Reset colors
 
-BG_WHITE="\033[0;47m"
+# Text
+ITALIC="\[\e[3m\]"
+ITALIC_END="\e[23m"
+BOLD="\e[1m"
+BOLD_END="\e[23m"
+RESET_TEXT="\[\e(B\e[m\]"
 
-RS="\033[0m" # Reset colors
+# Prompt variables
+TIME="\t"
+USER="\u"
+HOST="\h"
+DIR="\w"
+GIT="\$(__git_ps1)"
+CHAR="λ"
+
+# Styled chunks
+TIME_CHUNK="$GREEN$TIME$RESETCOLOR"
+USER_CHUNK="$CYAN$USER"
+
+
+
 
 # Git prompt setup
 GIT_PS1_SHOWDIRTYSTATE="true"
@@ -110,15 +130,16 @@ GIT_PS1_SHOWDIRTYSTATE="true"
 #GIT_PS1_SHOWUPSTREAM="auto"
 #GIT_PS1_STATESEPARATOR="  "
 
-TIME="\[$COL_LGREEN\]\A\[$RS\]"
-USER="\[$COL_CYAN\]\u\[$RS\]"
-HOST="\[$COL_PURPLE\]\h\[$RS\]"
-DIR="\[$COL_YELLOW\]\w\[$RS\]"
-GIT="\[$COL_LGREEN\]\$(__git_ps1)\[$RS\]"
-NEWLINE="\\n\[$COL_PURPLE\]$\[$RS\] "
+# TIME="\[$COL_LGREEN\]\t\[$RS\]"
+# USER="\[$COL_CYAN\]\u\[$RS\]"
+# HOST="\[$COL_PURPLE\]$BOLD\h$RESET_TEXT\[$RS\]"
+# DIR="\[$COL_YELLOW\]\w\[$RS\]"
+# GIT="\[$COL_LGREEN\]\$(__git_ps1)\[$RS\]"
+# NEWLINE="\\n\[$COL_PURPLE\]λ\[$RS\] "
 
 # Define custom prompt
-export PS1="$TIME $USER@$HOST:[$DIR]$GIT $NEWLINE"
+export PS1="$TIME_CHUNK $USER_CHUNK@$HOST:[$DIR]$GIT $NEWLINE"
+# export PS1="$TIMECHUNK"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
