@@ -141,7 +141,7 @@ function lastCmd() {
 }
 
 # Define custom prompt
-export PS1="$DIM┏[$TIME]━━[$USER@$HOST]━━┫ $DIR ┣━━[\$(lastCmd)]$GIT\n🡺$RESET "
+export PS1="$DIM┏[$TIME]━━[$USER@$HOST]━━┫ $DIR ┣━━[\$(lastCmd)$DIM]$GIT\n🡺$RESET "
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
