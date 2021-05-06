@@ -1,5 +1,28 @@
 Import-Module -Name posh-git
 
+# Configure Vim Mode
+
+Set-PSReadLineOption -EditMode Vi
+
+# Change cursor for each Vim mode
+function OnViModeChange {
+    if ($args[0] -eq 'Command') {
+        # Set the cursor to a blinking block.
+        Write-Host -NoNewLine "`e[1 q"
+    } else {
+        # Set the cursor to a blinking line.
+        Write-Host -NoNewLine "`e[5 q"
+    }
+}
+Set-PSReadLineOption -ViModeIndicator Script -ViModeChangeHandler $Function:OnViModeChange
+
+# Bind up arrow and K key (in CMD mode) to history search with current line contents
+Set-PSReadLineKeyHandler -Chord UpArrow -Function HistorySearchBackward
+Set-PSReadLineKeyHandler -ViMode Command -Chord k -Function HistorySearchBackward
+
+# Map 'jj' to Esc
+Set-PSReadLineKeyHandler -ViMode Insert -Chord j,j -Function ViCommandMode
+
 # Custom Prompt ----------------------------------------------------
 function prompt {
     $identity = [Security.Principal.WindowsIdentity]::GetCurrent()
@@ -51,6 +74,13 @@ function git-checkout {
     git checkout $args
 }
 Set-Alias -Name gco -Value git-checkout
+
+# Pulls and rebases latest master from upstream and pushes to fork
+function git-refresh {
+    git pull --rebase upstream master
+    git push origin master
+}
+Set-Alias -Name grf -Value git-refresh
 
 function git-create-branch {
     git checkout -b $args
