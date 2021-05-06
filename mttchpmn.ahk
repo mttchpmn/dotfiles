@@ -8,6 +8,7 @@
 ; AHK Script defaults
 
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
+#SingleInstance Force
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
@@ -17,43 +18,36 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ; KEY REMAPS
 
 ; Map Shift+Alt+Vim keys to arrow keys
-+!h::Send {Left}
-+!j::Send {Down}
-+!k::Send {Up}
-+!l::Send {Right}
-
+; +!h::Send {Left}
+; +!j::Send {Down}
+; +!k::Send {Up}
+; +!l::Send {Right}
 
 ; ##################################################
 ; PROGRAM SHORTCUTS
 
 ; Launch Terminal with Ctrl+Alt+j or switch to it if it exists
-; NOTE - requires a shortcut called 'terminal' on the Desktop
-^!j::
+^!t::
 if WinExist("ahk_exe WindowsTerminal.exe")
     WinActivate, ahk_exe WindowsTerminal.exe
 else
-    Run, %A_Desktop%\Terminal
-return
-
-; Launch VS Code with Ctrl+Alt+k or switch to it if it exists
-^!k::
-if WinExist("ahk_exe Code.exe")
-    WinActivate, ahk_exe Code.exe
-else
-    Run, "C:\Users\%A_UserName%\AppData\Local\Programs\Microsoft VS Code\Code.exe"
-return
-
-; Launch Chrome with Ctrl+Alt+l or switch to it if it exists
-^!l::
-if WinExist("ahk_exe chrome.exe")
-    WinActivate, ahk_exe chrome.exe
-else
-    Run, chrome.exe
+    Run, wt.exe
 return
 
 ; Switch to previous window with Ctrl+ Alt+ ;
 ^!;::Send !{Tab}
 
-; Launch File Explorer with Ctrl+Alt+e
-^!e::
-Run, explorer.exe
+; Move between desktops with Ctrl+Alt+[h/l]
+^!h::Send #^{Left}
+^!l::Send #^{Right}
+
+; FIXME
+; Move windows with Shift+Alt+[h/j/k/l] 
++!h::Send #{Left}
++!j::Send #{Down}
++!k::Send #{Up}
++!l::Send #{Right}
+
+; Change window with Alt+[n/b]
+<!n::AltTab
+<!b::ShiftAltTab
