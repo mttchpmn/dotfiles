@@ -21,8 +21,22 @@ Set-PSReadLineKeyHandler -Chord UpArrow -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -ViMode Command -Chord k -Function HistorySearchBackward
 
 # Map 'jj' to Esc
-Set-PSReadLineKeyHandler -ViMode Insert -Chord j,j -Function ViCommandMode
 
+# Set-PSReadLineKeyHandler -ViMode Insert -Chord j,j -Function ViCommandMode # Doesnt work. Doesnt wait for the second J
+
+# Function to handle 'jj' sequence properly. Thanks to Github Issues ;)
+Set-PSReadLineKeyHandler -Chord 'j' -ScriptBlock {
+  if ([Microsoft.PowerShell.PSConsoleReadLine]::InViInsertMode()) {
+    $key = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+    if ($key.Character -eq 'j') {
+      [Microsoft.PowerShell.PSConsoleReadLine]::ViCommandMode()
+    }
+    else {
+      [Microsoft.Powershell.PSConsoleReadLine]::Insert('j')
+      [Microsoft.Powershell.PSConsoleReadLine]::Insert($key.Character)
+    }
+  }
+}
 # Custom Prompt ----------------------------------------------------
 function prompt {
     $identity = [Security.Principal.WindowsIdentity]::GetCurrent()
@@ -55,11 +69,20 @@ function prompt {
     return " "
 }
 
-# Common aliases ----------------------------------------------------
+# Common aliases for Win / Unix ----------------------------------------------------
 
 Set-Alias -Name c -Value Clear-Host
 Set-Alias -Name ll -Value Get-ChildItem
 Set-Alias -Name man -Value Get-Help
+
+# Helper functions
+
+function symlink {
+    $source=$args[0]
+    $dest=$args[1]
+
+    New-Item -ItemType SymbolicLink -Path $dest -Target $source
+}
 
 # Git Commands and aliases ----------------------------------------------------
 
@@ -106,3 +129,17 @@ function git-commit {
     git commit -m $args
 }
 Set-Alias -Name gct -Value git-commit
+function git-commit-faml {
+    $hasTicket=$(git rev-parse --abbrev-ref HEAD) -match "PFM-\d{4}"
+
+    if (!$hasTicket) {
+        echo "Error: No FirstAML ticket ID found in branch name"
+        return
+    }
+
+    $ticket=$Matches[0]
+    $message=$args[0]
+
+    git commit -m "[$ticket] $message"
+}
+Set-Alias -Name gcf -Value git-commit-faml
