@@ -1,0 +1,71 @@
+" Base Settings
+set scrolloff=5
+set relativenumber
+set showmode
+set showcmd
+
+set smartcase
+set incsearch
+set hlsearch
+
+set visualbell
+set noerrorbells
+
+" Use system clipboard
+set clipboard+=unnamed    
+
+" Plugins
+set surround
+set highlightedyank
+set NERDTree
+
+" Mappings
+
+let mapleader=" "
+inoremap jj <Esc>
+
+" Tab movement
+" Can also use gt / gT and :tabp / :tabn
+nnoremap tl :tabnext<CR>
+nnoremap th :tabprev<CR>
+"nnoremap tn :tabnew<CR> " Doesnt work in Rider :(
+nnoremap tx :tabclose<CR> " Doesn't work properly in Rider :(
+
+" Window movement
+" Can also use <C-w> + hjkl
+nnoremap wh <C-w>h
+nnoremap wl <C-w>l
+nnoremap wj <C-w>j
+nnoremap wk <C-w>k
+"nnoremap wq <C-w>q " Doesnt work in Rider :(
+
+" Create splits of current file
+nnoremap wv <C-w>v
+nnoremap ws <C-w>s
+
+" New file
+nnoremap <leader>n :action NewFile<CR>
+
+" Equivalent of F2
+map <leader>r :action RenameElement<CR>
+
+" Open Terminal
+map <leader>t :action ActivateTerminalToolWindow<CR>
+
+" Show context menu
+map <leader>cm :action ShowIntentionActions<CR>
+
+" TODO
+" - NERDTree configuration?
+" - Find file / fuzzy finder
+" - Rename (done)
+" - Refactor
+" - Reformat
+" - Ctrl + . command
+" - Find usages
+" - Jump to definition 
+" - Find implementation
+" - Build
+" - Run
+" - Run unit tests
+" - Debug

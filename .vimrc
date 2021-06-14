@@ -131,8 +131,8 @@ nnoremap<leader>s :mksession<CR>
 nnoremap<C-\> <C-w>v<C-w>l
 
 " ALternative tab commands
-nnoremap th :tabnext<CR>
-nnoremap tl :tabprev<CR>
+nnoremap tl :tabnext<CR>
+nnoremap th :tabprev<CR>
 nnoremap tn :tabnew<CR>
 nnoremap tx :tabclose<CR>
 
