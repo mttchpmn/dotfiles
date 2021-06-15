@@ -1,4 +1,10 @@
+" ======================================================================================================================
+
+" mttchpmn - .ideavimrc
+
+" ======================================================================================================================
 " Base Settings
+
 set scrolloff=5
 set relativenumber
 set showmode
@@ -14,12 +20,15 @@ set noerrorbells
 " Use system clipboard
 set clipboard+=unnamed    
 
+" ======================================================================================================================
 " Plugins
+
 set surround
 set highlightedyank
 set NERDTree
 
-" Mappings
+" ======================================================================================================================
+" Key Mappings
 
 let mapleader=" "
 inoremap jj <Esc>
@@ -29,7 +38,7 @@ inoremap jj <Esc>
 nnoremap tl :tabnext<CR>
 nnoremap th :tabprev<CR>
 "nnoremap tn :tabnew<CR> " Doesnt work in Rider :(
-nnoremap tx :tabclose<CR> " Doesn't work properly in Rider :(
+nnoremap tq :tabclose<CR> " Doesn't work properly in Rider :(
 
 " Window movement
 " Can also use <C-w> + hjkl
@@ -43,6 +52,9 @@ nnoremap wk <C-w>k
 nnoremap wv <C-w>v
 nnoremap ws <C-w>s
 
+" ======================================================================================================================
+" Rider Actions (non-standard)
+
 " New file
 nnoremap <leader>n :action NewFile<CR>
 
@@ -55,7 +67,9 @@ map <leader>t :action ActivateTerminalToolWindow<CR>
 " Show context menu
 map <leader>cm :action ShowIntentionActions<CR>
 
+" ======================================================================================================================
 " TODO
+
 " - NERDTree configuration?
 " - Find file / fuzzy finder
 " - Rename (done)
