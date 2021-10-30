@@ -23,7 +23,6 @@ snap:
 	@snap install code --classic
 	@snap install rider --classic
 	@snap install slack --classic
-	@snap install teams --classic
 	@snap install spotify --classic
 
 pacman:
