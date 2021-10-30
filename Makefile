@@ -1,15 +1,23 @@
-all: packages dotfiles sdks apps  
+# mttchpmn's Makefile
 
-packages: pacman
+# Windows
+windows: winget dotfiles
 
-dotfiles: bash vim tmux git alacritty rofi source
+winget:
+	@winget install Microsoft.WindowsTerminal.Preview
+	@winget install Microsoft.Powershell
+	@winget install Microsoft.VisualStudioCode
+	@winget install Jetbrains.Rider.EAP
+	@winget install BraveSoftware.BraveBrowser
+	@winget install Insomnia.Insomnia
+	@winget install Postman.Postman
+	@winget install SlackTechnologies.Slack
+	@winget install Notion.Notion
+	@winget install Spotify.Spotify
+	@winget install BlenderFoundation.Blender
 
-sdks: node dotnet
-
-apps: snap
-
-pacman:
-	sudo pacman -S vim alacritty rofi ranger tree
+# Linux
+linux: alacritty rofi source snap pacman
 
 snap:
 	@snap install code --classic
@@ -18,12 +26,32 @@ snap:
 	@snap install teams --classic
 	@snap install spotify --classic
 
+pacman:
+	sudo pacman -S vim alacritty rofi ranger tree
+
+dotnet:
+	@snap install dotnet-sdk --classic
+
+alacritty:
+	@ln -sf $(PWD)/alacritty $(HOME)/.config
+
+rofi:
+	@ln -sf $(PWD)/rofi $(HOME)/.config
+
+# Platform agnostic
+dotfiles: bash vim tmux git 
+
+folders:
+	mkdir -p $(HOME)/code/work $(HOME)/code/personal
+
+sdks: node dotnet
 
 bash:
 	@ln -sf $(PWD)/.bashrc $(HOME)
 	@ln -sf $(PWD)/.bash_profile $(HOME)
 	@ln -sf $(PWD)/.work.sh $(HOME)
 	@ln -sf $(PWD)/.inputrc $(HOME)
+	@source ~/.bashrc
 
 vim:
 	@ln -sf $(PWD)/.vimrc $(HOME)
@@ -41,19 +69,5 @@ node:
 	nvm install 14.15.5
 	@npm install --global yarn typescript ts-node
 
-dotnet:
-	@snap install dotnet-sdk --classic
 
-alacritty:
-	@ln -sf $(PWD)/alacritty $(HOME)/.config
-
-rofi:
-	@ln -sf $(PWD)/rofi $(HOME)/.config
-
-folders:
-	mkdir -p $(HOME)/code/work $(HOME)/code/personal
-
-source: bash
-	@source ~/.bashrc
-
-.PHONY: all packages dotfiles sdks apps pacman snap bash vim tmux node dotnet alacritty rofi git
+.PHONY: all dotfiles sdks pacman snap bash vim tmux node dotnet alacritty rofi git linux windows
