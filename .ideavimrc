@@ -24,12 +24,14 @@ set NERDTree
 let mapleader=" "
 inoremap jj <Esc>
 
+
 " Tab movement
 " Can also use gt / gT and :tabp / :tabn
 nnoremap tl :tabnext<CR>
 nnoremap th :tabprev<CR>
 "nnoremap tn :tabnew<CR> " Doesnt work in Rider :(
 nnoremap tx :tabclose<CR> " Doesn't work properly in Rider :(
+
 
 " Window movement
 " Can also use <C-w> + hjkl
@@ -44,16 +46,47 @@ nnoremap wv <C-w>v
 nnoremap ws <C-w>s
 
 " New file
-nnoremap <leader>n :action NewFile<CR>
+" nnoremap <leader>n :action NewFile<CR>
 
 " Equivalent of F2
 map <leader>r :action RenameElement<CR>
 
-" Open Terminal
-map <leader>t :action ActivateTerminalToolWindow<CR>
-
 " Show context menu
 map <leader>cm :action ShowIntentionActions<CR>
+
+" Execute macro saved in 'q' register
+nnoremap qj @q
+
+" Go to errors
+map <leader>ne :action ReSharperGotoNextErrorInSolution<CR>
+map <leader>pe :action ReSharperGotoPrevErrorInSolution<CR>
+
+
+" Editor tool window shortcuts
+
+" Explorer
+map <leader>te :action ActivateProjectToolWindow<CR>
+
+"Structure
+map <leader>ts :action ActivateStructureToolWindow<CR>
+
+" Commit
+map <leader>tc :action ActivateCommitToolWindow<CR>
+
+" Favorites
+map <leader>tf :action ActivateFavoritesToolWindow<CR>
+
+" Debug
+map <leader>td :action ActivateDebugToolWindow<CR>
+
+" Unit Tests
+map <leader>tt :action ActivateUnitTestsToolWindow<CR>
+
+" Git
+map <leader>tg :action ActivateVersionControlToolWindow<CR>
+
+" Terminal
+map <leader>tb :action ActivateTerminalToolWindow<CR>
 
 " TODO
 " - NERDTree configuration?
