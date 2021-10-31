@@ -1,4 +1,4 @@
-Import-Module -Name posh-git
+# Import-Module -Name posh-git
 
 # Configure Vim Mode
 
@@ -143,3 +143,6 @@ function git-commit-faml {
     git commit -m "[$ticket] $message"
 }
 Set-Alias -Name gcf -Value git-commit-faml
+
+# Need to also install Nerdfont and set terminal to use it
+Set-PoshPrompt -Theme jandedobbeleer

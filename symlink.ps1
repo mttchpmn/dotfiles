@@ -1,0 +1,5 @@
+Write-Host "Symlinking dotfiles..."
+New-Item -ItemType SymbolicLInk -Force -Path "C:\Users\matt\.vimrc" -Target "C:\Users\matt\dotfiles\.vimrc"
+New-Item -ItemType SymbolicLInk -Force -Path "C:\Users\matt\.ideavimrc" -Target "C:\Users\matt\dotfiles\.ideavimrc"
+New-Item -ItemType SymbolicLInk -Force -Path "C:\Users\matt\.gitconfig" -Target "C:\Users\matt\dotfiles\git\.gitconfig"
+New-Item -ItemType SymbolicLInk -Force -Path "C:\Users\matt\Documents\Powershell\Microsoft.PowerShell_profile.ps1" -Target "C:\Users\matt\dotfiles\Microsoft.PowerShell_profile.ps1"

@@ -1,23 +1,5 @@
 # mttchpmn's Makefile
 
-# Windows
-windows: winget dotfiles
-
-winget:
-	@winget install Microsoft.WindowsTerminal.Preview
-	@winget install Microsoft.Powershell
-	@winget install Microsoft.VisualStudioCode
-	@winget install Jetbrains.Rider.EAP
-	@winget install Jetbrains.WebStorm.EAP
-	@winget install BraveSoftware.BraveBrowser
-	@winget install Insomnia.Insomnia
-	@winget install Postman.Postman
-	@winget install SlackTechnologies.Slack
-	@winget install Notion.Notion
-	@winget install Spotify.Spotify
-	@winget install BlenderFoundation.Blender
-
-# Linux
 linux: alacritty rofi source snap pacman
 
 snap:
