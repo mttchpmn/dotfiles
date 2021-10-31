@@ -8,6 +8,7 @@ winget:
 	@winget install Microsoft.Powershell
 	@winget install Microsoft.VisualStudioCode
 	@winget install Jetbrains.Rider.EAP
+	@winget install Jetbrains.WebStorm.EAP
 	@winget install BraveSoftware.BraveBrowser
 	@winget install Insomnia.Insomnia
 	@winget install Postman.Postman
