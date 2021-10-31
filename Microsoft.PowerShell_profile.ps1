@@ -1,10 +1,24 @@
-# Import-Module -Name posh-git
+# mttchpmn's Powershell Profile
 
-# Configure Vim Mode
+# Module Imports ##########################################################
+
+Import-Module -Name Terminal-Icons
+
+if ($host.Name -eq 'ConsoleHost')
+{
+    Import-Module PSReadLine
+}
+
+# Readline Options ########################################################
 
 Set-PSReadLineOption -EditMode Vi
+Set-PSReadLineOption -PredictionSource History
+Set-PSReadLineOption -PredictionViewStyle ListView
 
-# Change cursor for each Vim mode
+# Bind up arrow and K key (in CMD mode) to history search with current line contents
+Set-PSReadLineKeyHandler -Chord UpArrow -Function HistorySearchBackward
+Set-PSReadLineKeyHandler -ViMode Command -Chord k -Function HistorySearchBackward
+# Change cursor according to Vim mode (block in Normal mode, bar in insert mode)
 function OnViModeChange {
     if ($args[0] -eq 'Command') {
         # Set the cursor to a blinking block.
@@ -16,15 +30,8 @@ function OnViModeChange {
 }
 Set-PSReadLineOption -ViModeIndicator Script -ViModeChangeHandler $Function:OnViModeChange
 
-# Bind up arrow and K key (in CMD mode) to history search with current line contents
-Set-PSReadLineKeyHandler -Chord UpArrow -Function HistorySearchBackward
-Set-PSReadLineKeyHandler -ViMode Command -Chord k -Function HistorySearchBackward
 
 # Map 'jj' to Esc
-
-# Set-PSReadLineKeyHandler -ViMode Insert -Chord j,j -Function ViCommandMode # Doesnt work. Doesnt wait for the second J
-
-# Function to handle 'jj' sequence properly. Thanks to Github Issues ;)
 Set-PSReadLineKeyHandler -Chord 'j' -ScriptBlock {
   if ([Microsoft.PowerShell.PSConsoleReadLine]::InViInsertMode()) {
     $key = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
@@ -38,6 +45,8 @@ Set-PSReadLineKeyHandler -Chord 'j' -ScriptBlock {
   }
 }
 # Custom Prompt ----------------------------------------------------
+
+# Note - not currently using in favor of oh-my-posh
 function prompt {
     $identity = [Security.Principal.WindowsIdentity]::GetCurrent()
     $principal = [Security.Principal.WindowsPrincipal] $identity
@@ -69,13 +78,17 @@ function prompt {
     return " "
 }
 
-# Common aliases for Win / Unix ----------------------------------------------------
+# Need to also install Nerdfont and set terminal / vscode to use nerd font
+Set-PoshPrompt -Theme jandedobbeleer
+
+# Aliases ###################################################################
 
 Set-Alias -Name c -Value Clear-Host
 Set-Alias -Name ll -Value Get-ChildItem
 Set-Alias -Name man -Value Get-Help
+Set-Alias -Name vim -Value "C:\Program Files\Vim\vim82\vim.exe"
 
-# Helper functions
+# Functions ################################################################
 
 function symlink {
     $source=$args[0]
@@ -143,6 +156,3 @@ function git-commit-faml {
     git commit -m "[$ticket] $message"
 }
 Set-Alias -Name gcf -Value git-commit-faml
-
-# Need to also install Nerdfont and set terminal to use it
-Set-PoshPrompt -Theme jandedobbeleer

@@ -17,9 +17,14 @@ winget install BlenderFoundation.Blender
 
 Write-Host "Installing packages..."
 winget install Git.Git
+winget install Vim.Vim
+winget install Docker.DockerDesktop
 
 Write-Host "Installing 'Oh My Posh' module..."
 Install-Module oh-my-posh -Scope CurrentUser
+Install-Module Terminal-Icons
+Install-Module z -AllowClobber
+Install-Module PSReadline -RequiredVersion 2.2.0-beta1 -AllowPrerelease
 
 Write-Host "Opening admin shell..."
 Start-Process powershell -Verb runas -ArgumentList '-noExit', '-File', 'C:\Users\matt\dotfiles\symlink.ps1'
