@@ -86,6 +86,7 @@ Set-PoshPrompt -Theme jandedobbeleer
 Set-Alias -Name c -Value Clear-Host
 Set-Alias -Name ll -Value Get-ChildItem
 Set-Alias -Name man -Value Get-Help
+Set-Alias -Name cat -Value "pygmentize" # pip install pygments
 Set-Alias -Name vim -Value "C:\Program Files\Vim\vim82\vim.exe"
 
 # Functions ################################################################

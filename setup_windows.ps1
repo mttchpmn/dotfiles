@@ -20,6 +20,9 @@ winget install Git.Git
 winget install Vim.Vim
 winget install Docker.DockerDesktop
 
+Write-Host "Installing sdks..."
+winget install Python.Python.3
+
 Write-Host "Installing 'Oh My Posh' module..."
 Install-Module oh-my-posh -Scope CurrentUser
 Install-Module Terminal-Icons
