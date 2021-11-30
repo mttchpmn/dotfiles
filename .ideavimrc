@@ -41,7 +41,6 @@ nnoremap th :tabprev<CR>
 "nnoremap tn :tabnew<CR> " Doesnt work in Rider :(
 nnoremap tq :tabclose<CR> " Doesn't work properly in Rider :(
 
-
 " Window movement
 " Can also use <C-w> + hjkl
 nnoremap wh <C-w>h
@@ -50,62 +49,71 @@ nnoremap wj <C-w>j
 nnoremap wk <C-w>k
 "nnoremap wq <C-w>q " Doesnt work in Rider :(
 
+" Pane navigation (Alt + h/j/k/l)
+nnoremap <A-h> <C-w>h
+nnoremap <A-l> <C-w>l
+nnoremap <A-k> <C-w>k
+nnoremap <A-j> <C-w>j
+
+"Tab Navigation (Alt + n/p)
+nnoremap <A-n> :tabnext<CR>
+nnoremap <A-p> :tabprev<CR>
+
 " Create splits of current file
 nnoremap wv <C-w>v
 nnoremap ws <C-w>s
 
+" Execute macro saved in 'q' register
+nnoremap qj @q
+
 " ======================================================================================================================
 " Rider Actions (non-standard)
 
-" New file
-" nnoremap <leader>n :action NewFile<CR>
-
-" Equivalent of F2
-map <leader>r :action RenameElement<CR>
+" Refactorings
+map <leader>rn :action RenameElement<CR> " name
+map <leader>rm :action ExtractMethod<CR> " method
+map <leader>rv :action IntroduceVariable<CR> " variable
+map <leader>rp :action ReformatCode<CR> " prettify
+map <leader>rf :action IntroduceField<CR> " field
+map <leader>rr :action Refactorings.QuickListPopupAction<CR> " refactoring
 
 " Show context menu
 map <leader>cm :action ShowIntentionActions<CR>
-
-" Execute macro saved in 'q' register
-nnoremap qj @q
 
 " Go to errors
 map <leader>ne :action ReSharperGotoNextErrorInSolution<CR>
 map <leader>pe :action ReSharperGotoPrevErrorInSolution<CR>
 
-
 " Editor tool window shortcuts
 
 " Explorer
-map <leader>te :action ActivateProjectToolWindow<CR>
+"map <leader>te :action ActivateProjectToolWindow<CR>
 
 "Structure
-map <leader>ts :action ActivateStructureToolWindow<CR>
+"map <leader>ts :action ActivateStructureToolWindow<CR>
 
 " Commit
-map <leader>tc :action ActivateCommitToolWindow<CR>
+"map <leader>tc :action ActivateCommitToolWindow<CR>
 
 " Favorites
-map <leader>tf :action ActivateFavoritesToolWindow<CR>
+"map <leader>tf :action ActivateFavoritesToolWindow<CR>
 
 " Debug
-map <leader>td :action ActivateDebugToolWindow<CR>
+"map <leader>td :action ActivateDebugToolWindow<CR>
 
 " Unit Tests
-map <leader>tt :action ActivateUnitTestsToolWindow<CR>
+"map <leader>tt :action ActivateUnitTestsToolWindow<CR>
 
 " Git
-map <leader>tg :action ActivateVersionControlToolWindow<CR>
+"map <leader>tg :action ActivateVersionControlToolWindow<CR>
 
 " Terminal
-map <leader>tb :action ActivateTerminalToolWindow<CR>
+"map <leader>tb :action ActivateTerminalToolWindow<CR>
 
 " TODO
 
 " - NERDTree configuration?
 " - Find file / fuzzy finder
-" - Rename (done)
-" - Refactor
 " - Reformat
 " - Ctrl + . command
 " - Find usages
