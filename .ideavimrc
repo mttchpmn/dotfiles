@@ -66,8 +66,32 @@ nnoremap ws <C-w>s
 " Execute macro saved in 'q' register
 nnoremap qj @q
 
+" Change indentation easily
+vnoremap < <gv
+vnoremap > >gv
+
 " ======================================================================================================================
-" Rider Actions (non-standard)
+" Rider Actions 
+
+" Jump between methods
+nnoremap [[ :action MethodUp<CR>
+nnoremap ]] :action MethodDown<CR>
+
+" Code folding
+nnoremap zc :action CollapseRegion<CR>
+nnoremap zo :action ExpandRegion<CR>
+nnoremap <leader>zc :action CollapseAllRegions<CR>
+nnoremap <leader>zo :action ExpandAllRegions<CR>
+
+" Comment lines easily
+nnoremap <leader>c :action CommentByLineComment<CR>
+
+" File finding
+nnoremap <leader>fr :action RecentFiles<CR>
+nnoremap <leader>fl :action RecentLocations<CR>
+
+" Toggle distraction free mode
+map <leader>z :action ToggleDistractionFreeMode<CR>
 
 " Refactorings
 map <leader>rn :action RenameElement<CR> " name
@@ -75,51 +99,19 @@ map <leader>rm :action ExtractMethod<CR> " method
 map <leader>rv :action IntroduceVariable<CR> " variable
 map <leader>rp :action ReformatCode<CR> " prettify
 map <leader>rf :action IntroduceField<CR> " field
+map <leader>ri :action OptimizeImports<CR> " imports
 map <leader>rr :action Refactorings.QuickListPopupAction<CR> " refactoring
 
+" Definitions and usages
+nmap <leader>td :action GoToDeclaration<CR> " Declaration
+nmap <leader>tu :action ShowUsages<CR> " Usages
+
 " Show context menu
-map <leader>cm :action ShowIntentionActions<CR>
+map <leader>cm :action ShowIntentionActions<CR> " context menu
 
 " Go to errors
-map <leader>ne :action ReSharperGotoNextErrorInSolution<CR>
-map <leader>pe :action ReSharperGotoPrevErrorInSolution<CR>
-
-" Editor tool window shortcuts
-
-" Explorer
-"map <leader>te :action ActivateProjectToolWindow<CR>
-
-"Structure
-"map <leader>ts :action ActivateStructureToolWindow<CR>
-
-" Commit
-"map <leader>tc :action ActivateCommitToolWindow<CR>
-
-" Favorites
-"map <leader>tf :action ActivateFavoritesToolWindow<CR>
-
-" Debug
-"map <leader>td :action ActivateDebugToolWindow<CR>
-
-" Unit Tests
-"map <leader>tt :action ActivateUnitTestsToolWindow<CR>
-
-" Git
-"map <leader>tg :action ActivateVersionControlToolWindow<CR>
-
-" Terminal
-"map <leader>tb :action ActivateTerminalToolWindow<CR>
-
-" TODO
+map <leader>en :action ReSharperGotoNextErrorInSolution<CR> " error next
+map <leader>ep :action ReSharperGotoPrevErrorInSolution<CR> " error previous
 
 " - NERDTree configuration?
 " - Find file / fuzzy finder
-" - Reformat
-" - Ctrl + . command
-" - Find usages
-" - Jump to definition 
-" - Find implementation
-" - Build
-" - Run
-" - Run unit tests
-" - Debug
