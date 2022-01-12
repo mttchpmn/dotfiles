@@ -33,7 +33,7 @@ bash:
 	@ln -sf $(PWD)/.bash_profile $(HOME)
 	@ln -sf $(PWD)/.work.sh $(HOME)
 	@ln -sf $(PWD)/.inputrc $(HOME)
-	@source ~/.bashrc
+#	@source ~/.bashrc
 
 vim:
 	@ln -sf $(PWD)/.vimrc $(HOME)
