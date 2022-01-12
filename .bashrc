@@ -21,7 +21,7 @@ if [ -f ~/.work.sh ]; then
 fi
 
 # Set default editor
-export EDITOR=vim
+export EDITOR=nvim
 
 ##################################################
 # PATH
@@ -43,19 +43,20 @@ export HISTTIMEFORMAT="[%h %d %H:%M:%S] "
 # ALIASES AND FUNCTIONS
 
 # Utility
-alias bashrc='vim ~/.bashrc'
-alias vimrc='vim ~/.vimrc'
+alias bashrc='nvim ~/.bashrc'                
+alias vimrc='nvim ~/.vimrc'
+alias n='nvim'
 alias h='history'
 alias c='clear'
 alias r='reset'
 alias x='exit'
 alias la='ls -a'
 alias ll='ls -FGalh'
+alias ts='tree -CshF -L 3'
 alias duh='du -h --max-depth=1'
 alias dfh='df -h'
 alias cp='cp -v'
 alias rm='rm -i'
-alias ts='tree -CshF -L 3'
 alias cgrep='grep -Hn --color=always'
 alias shutdown='shutdown -h now'
 
@@ -74,14 +75,13 @@ alias ga='git add'
 alias gap='git add -p'
 alias gd='git diff --color-moved'
 alias gdc='git diff --compact-summary'
-alias gdf='git diff --color | diff-so-fancy' # npm install -g diff-so-fancy
 alias gc='git commit -m'
-alias gl='git log'
+alias gl='git log --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%an%Cgreen%d %Creset%s' --date=short'
 alias gco='git checkout $1'
 alias gcb='git checkout -b $1'
-alias gps='git push'
-alias gpl='git pull'
-alias unstage='git restore --staged'
+alias gpu='git push'
+alias gpd='git pull'
+alias grm='git restore --staged'
 
 gclone() {
   git clone git@github.com:$1/$2.git $3
