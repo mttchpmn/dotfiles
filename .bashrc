@@ -76,7 +76,7 @@ alias gap='git add -p'
 alias gd='git diff --color-moved'
 alias gdc='git diff --compact-summary'
 alias gc='git commit -m'
-alias gl='git log --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%an%Cgreen%d %Creset%s' --date=short'
+alias gl="git log --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%an%Cgreen%d %Creset%s' --date=short"
 alias gco='git checkout $1'
 alias gcb='git checkout -b $1'
 alias gpu='git push'
