@@ -45,7 +45,6 @@ export HISTTIMEFORMAT="[%h %d %H:%M:%S] "
 # Utility
 alias bashrc='nvim ~/.bashrc'                
 alias vimrc='nvim ~/.vimrc'
-alias n='nvim'
 alias h='history'
 alias c='clear'
 alias r='reset'
@@ -59,6 +58,14 @@ alias cp='cp -v'
 alias rm='rm -i'
 alias cgrep='grep -Hn --color=always'
 alias shutdown='shutdown -h now'
+
+n() {
+  if [[ -z $1 ]]; then
+    nvim .
+  else
+    nvim $1
+  fi
+}
 
 listport() {
         lsof -i :$1
