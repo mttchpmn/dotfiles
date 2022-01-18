@@ -45,6 +45,7 @@ export HISTTIMEFORMAT="[%h %d %H:%M:%S] "
 # Utility
 alias bashrc='nvim ~/.bashrc'                
 alias vimrc='nvim ~/.vimrc'
+alias n='nvim'
 alias h='history'
 alias c='clear'
 alias r='reset'
@@ -59,14 +60,6 @@ alias rm='rm -i'
 alias cgrep='grep -Hn --color=always'
 alias shutdown='shutdown -h now'
 
-n() {
-  if [[ -z $1 ]]; then
-    nvim .
-  else
-    nvim $1
-  fi
-}
-
 listport() {
         lsof -i :$1
 }
@@ -80,7 +73,8 @@ killport() {
 alias gs='git status'
 alias ga='git add'
 alias gap='git add -p'
-alias gd='git diff --color-moved'
+# alias gd='git diff --color-moved'
+alias gd='git diff $1 --color | diff-so-fancy'
 alias gdc='git diff --compact-summary'
 alias gc='git commit -m'
 alias gl="git log --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%an%Cgreen%d %Creset%s' --date=short"
@@ -89,6 +83,15 @@ alias gcb='git checkout -b $1'
 alias gpu='git push'
 alias gpd='git pull'
 alias grm='git restore --staged'
+
+function pretty_diff() {
+   # Check if diff-so-fancy installed
+   if ! diff-so-fancy -v &> /dev/null; then
+     git diff --color-words
+     else
+       git diff --color | diff-so-fancy
+   fi
+}
 
 gclone() {
   git clone git@github.com:$1/$2.git $3
@@ -160,3 +163,4 @@ export NVM_DIR="$HOME/.nvm"
 # uninstall by removing these lines
 [ -f ~/.config/tabtab/__tabtab.bash ] && . ~/.config/tabtab/__tabtab.bash || true
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+. "$HOME/.cargo/env"
