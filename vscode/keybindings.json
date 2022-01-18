@@ -1,62 +1,69 @@
 [
   // Navigate between open panes with Ctr+hjkl
   {
-    "key": "alt+h",
+    "key": "ctrl+h",
     "command": "workbench.action.focusLeftGroup",
     "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
   },
   {
-    "key": "alt+l",
+    "key": "ctrl+l",
     "command": "workbench.action.focusRightGroup",
     "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
   },
   {
-    "key": "alt+k",
+    "key": "ctrl+k",
     "command": "workbench.action.focusAboveGroup",
     "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
   },
   {
-    "key": "alt+j",
+    "key": "ctrl+j",
     "command": "workbench.action.focusBelowGroup",
     "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
   },
-  // Navigate between tabs with shift+alt+p|n
-  // {
-  //   "key": "shift+h",
-  //   "command": "workbench.action.previousEditor",
-  //   "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
-  // },
-  // {
-  //   "key": "shift+l",
-  //   "command": "workbench.action.nextEditor",
-  //   "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
-  // },
+
+  // Navigate between tabs with shift+h/l
+  {
+    "key": "shift+h",
+    "command": "workbench.action.previousEditor",
+    "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
+  },
+  {
+    "key": "shift+l",
+    "command": "workbench.action.nextEditor",
+    "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
+  },
+
+  // Open explorer with ctrl+e
+  { "key": "ctrl+e", "command": "workbench.view.explorer" },
+
+  // Open full screen terminal with shift+alt+;
   {
     "key": "shift+alt+;",
     "command": "workbench.action.toggleMaximizedPanel"
   },
+  // Open terminal with alt+;
   {
     "key": "alt+;",
     "command": "workbench.action.terminal.toggleTerminal"
   },
+  // {
+  //   "key": "alt+j",
+  //   "command": "workbench.action.terminal.focusNext"
+  // },
+  // {
+  //   "key": "alt+k",
+  //   "command": "workbench.action.terminal.focusPrevious"
+  // },
+
+  // Move up and down in intellisense with ctrl+j/k
   {
-    "key": "alt+j",
-    "command": "workbench.action.terminal.focusNext"
-  },
-  {
-    "key": "alt+k",
-    "command": "workbench.action.terminal.focusPrevious"
-  },
-  // Move up and down in Command palette and intellisense with Shift + JK
-  {
-    "key": "shift+k",
+    "key": "ctrl+k",
     "command": "selectPrevSuggestion",
     "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
   },
   {
-    "key": "shift+j",
+    "key": "ctrl+j",
     "command": "selectNextSuggestion",
     "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
-  },
-  { "key": "alt+'", "command": "workbench.view.explorer" }
+  }
 ]
