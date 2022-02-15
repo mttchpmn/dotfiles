@@ -31,7 +31,7 @@ set NERDTree
 " Key Mappings
 
 let mapleader=" "
-inoremap jj <Esc>
+inoremap jk <Esc>
 
 
 " Tab movement
