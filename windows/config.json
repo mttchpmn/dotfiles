@@ -14,11 +14,13 @@
     "Spotify.Spotify",
     "Python.Python3",
     "Docker.DockerDesktop",
-    "JanDeDobbeleer"
+    "JanDeDobbeleer.OhMyPosh"
   ],
+  "modules": ["PS-Readline", "Terminal-Icons", "z"],
   "downloads": [
     "https://www.rust-lang.org/tools/install",
-    "https://github.com/coreybutler/nvm-windows/releases"
+    "https://github.com/coreybutler/nvm-windows/releases",
+    "https://github.com/neovim/neovim/wiki/Installing-Neovim"
   ],
   "files": [
     {
