@@ -16,7 +16,7 @@
     "Docker.DockerDesktop",
     "JanDeDobbeleer.OhMyPosh"
   ],
-  "modules": ["PS-Readline", "Terminal-Icons", "z"],
+  "modules": ["PS-Readline", "Terminal-Icons", "Posh-Git", "z"],
   "downloads": [
     "https://www.rust-lang.org/tools/install",
     "https://github.com/coreybutler/nvm-windows/releases",
