@@ -52,11 +52,13 @@ function Link-Files([string] $configPath) {
 		$source = $file.source
 		$target = $file.target
 
+		$link = "$HOME\$Target"
+		$original = "$PSScriptRoot\$source"
 
 
-		# Write-Host "SOURCE: "$HOME\$source" TARGET: $target"
-		New-Item -ItemType SymbolicLink -Force -Path "$HOME\$source" -Target "$HOME\$target" 
-		# | Out-Null
+		Write-Host "Symlinking $link to point to $source"
+
+		New-Item -ItemType SymbolicLink -Force -Path $link -Target $original | Out-Null
 	}
 	Write-Host -ForegroundColor Green "Done."
 }

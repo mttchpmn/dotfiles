@@ -24,6 +24,10 @@
     {
       "source": "shared\\.ideavimrc",
       "target": ".ideavimrc"
+    },
+    {
+      "source": "windows\\Microsoft.PowerShell_profile.ps1",
+      "target": "Documents\\PowerShell\\Microsoft.PowerShell_profile.ps1"
     }
   ],
   "commands": [
