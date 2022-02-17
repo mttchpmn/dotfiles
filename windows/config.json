@@ -1,0 +1,33 @@
+{
+  "packages": [
+    "Microsoft.Powershell",
+    "Microsoft.VisualStudioCode",
+    "Microsoft.VisualStudio.2022.Community",
+    "Jetbrains.Rider",
+    "Jetbrains.Webstorm",
+    "Jetbrains.PyCharm.Community",
+    "Jetbrains.CLion",
+    "Insomnia.Insomnia",
+    "SlackTechnologies.Slack",
+    "Notion.Notion",
+    "BlenderFoundation.Blender",
+    "Spotify.Spotify",
+    "Python.Python3",
+    "Docker.DockerDesktop",
+    "JanDeDobbeleer"
+  ],
+  "downloads": [
+    "https://www.rust-lang.org/tools/install",
+    "https://github.com/coreybutler/nvm-windows/releases"
+  ],
+  "files": [
+    {
+      "source": "shared\\.ideavimrc",
+      "target": ".ideavimrc"
+    }
+  ],
+  "commands": [
+    "npm install --global yarn typescript",
+    "cargo install cargo-edit"
+  ]
+}
