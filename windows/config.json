@@ -5,18 +5,20 @@
     "Microsoft.VisualStudio.2022.Community",
     "Jetbrains.Rider",
     "Jetbrains.Webstorm",
-    "Jetbrains.PyCharm.Community",
     "Jetbrains.CLion",
+    "Jetbrains.PyCharm.Community",
+    "Jetbrains.IntelliJIDEA.Community",
     "Insomnia.Insomnia",
     "SlackTechnologies.Slack",
     "Notion.Notion",
     "BlenderFoundation.Blender",
     "Spotify.Spotify",
-    "Python.Python3",
+    "Python.Python.3",
+    "Oracle.JDK.17",
     "Docker.DockerDesktop",
     "JanDeDobbeleer.OhMyPosh"
   ],
-  "modules": ["PS-Readline", "Terminal-Icons", "Posh-Git", "z"],
+  "modules": ["Terminal-Icons", "Posh-Git", "z"],
   "downloads": [
     "https://www.rust-lang.org/tools/install",
     "https://github.com/coreybutler/nvm-windows/releases",
@@ -34,6 +36,7 @@
   ],
   "commands": [
     "npm install --global yarn typescript",
-    "cargo install cargo-edit"
+    "cargo install cargo-edit",
+    "wsl --install -d Ubuntu"
   ]
 }
