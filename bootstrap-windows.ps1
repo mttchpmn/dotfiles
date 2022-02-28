@@ -28,7 +28,7 @@ function Install-Packages([string] $configPath) {
 	foreach ($package in $config.packages) {
 		Write-Host ""
 		Write-Host -ForegroundColor Green "Installing $package..."
-		winget search $package
+		winget install $package | Out-Null
 	}
 }
 
@@ -68,7 +68,7 @@ function Install-Custom-Modules([string] $configPath) {
 
 	foreach ($module in $config.modules) {
 		Write-Host -ForegroundColor Green "Installing module $module..."
-		Install-Module -Force -AllowClobber "$module"
+		Install-Module -Force -AllowClobber $module
 	}
 }
 
