@@ -1,12 +1,11 @@
-" ======================================================================================================================
+"" .ideavimrc - Matt Chapman
 
-" mttchpmn - .ideavimrc
 
-" ======================================================================================================================
-" Base Settings
+"" Base Settings
+"" ========================================================
 
 set scrolloff=5
-set relativenumber
+set linenumber
 set showmode
 set showcmd
 
@@ -17,102 +16,84 @@ set hlsearch
 set visualbell
 
 " Use system clipboard
-set clipboard+=unnamed    
+set clipboard+=unnamed   
 
-" ======================================================================================================================
-" Plugins
+
+"" Plugin Settings
+"" ========================================================
 
 set surround
 set highlightedyank
-set NERDTree
 
-" ======================================================================================================================
-" Key Mappings
 
-let mapleader=" "
+"" Key mappings
+"" ========================================================
+
 inoremap jk <Esc>
 
+" Tab navigation
+nnoremap <A-n> :tabnext<CR>
+nnoremap <A-p> :tabprev<CR>
 
-" Tab movement
-" Can also use gt / gT and :tabp / :tabn
-nnoremap L :tabnext<CR>
-nnoremap H :tabprev<CR>
+" Window splits
+nnoremap wv <C-w>v
+nnoremap ws <C-w>s
 
-" Window movement
-" Can also use <C-w> + hjkl
-nnoremap wh <C-w>h
-nnoremap wl <C-w>l
-nnoremap wj <C-w>j
-nnoremap wk <C-w>k
-"nnoremap wq <C-w>q " Doesnt work in Rider :(
-
-" Pane navigation (Alt + h/j/k/l)
+" Pane navigation
 nnoremap <A-h> <C-w>h
 nnoremap <A-l> <C-w>l
 nnoremap <A-k> <C-w>k
 nnoremap <A-j> <C-w>j
 
-"Tab Navigation (Alt + n/p)
-nnoremap <A-n> :tabnext<CR>
-nnoremap <A-p> :tabprev<CR>
+" Jump between methods
+nnoremap [[ <Action>(MethodUp)
+nnoremap ]] <Action>(MethodDown)
 
-" Create splits of current file
-nnoremap wv <C-w>v
-nnoremap ws <C-w>s
+" Easy visual indentation
+vnoremap < <gv
+vnoremap > >gv
 
 " Execute macro saved in 'q' register
 nnoremap qj @q
 
-" Change indentation easily
-vnoremap < <gv
-vnoremap > >gv
+"" Leader commands
+"" ========================================================
 
-" ======================================================================================================================
-" Rider Actions 
+let mapleader = ";"
 
-" Jump between methods
-nnoremap [[ :action MethodUp<CR>
-nnoremap ]] :action MethodDown<CR>
+" Comment lines
+map <leader>c <action>(CommentByLineComment)
 
-" Code folding
-nnoremap zc :action CollapseRegion<CR>
-nnoremap zo :action ExpandRegion<CR>
+" Folding
 nnoremap <leader>zc :action CollapseAllRegions<CR>
 nnoremap <leader>zo :action ExpandAllRegions<CR>
 
-" Comment lines easily
-nnoremap <leader>c :action CommentByLineComment<CR>
+" Toggle Zen mode
+map <leader>z <action>(ToggleDistractionFreeMode)
 
-" Navigate popup menu
-inoremap <C-j> :action PopupMenu-selectNext<CR>
-inoremap <C-k> :action PopupMenu-selectPrev<CR>
+" Context menu
+map <leader>cm <action>(ShowIntentionActions)
 
-" File finding
-nnoremap <leader>fr :action RecentFiles<CR>
-nnoremap <leader>fl :action RecentLocations<CR>
+" Popup navigation
+inoremap <C-j> <Action>(PopupMenu-selectNext)
+inoremap <C-k> <Action>(PopupMenu-selectPrev)
 
-" Toggle distraction free mode
-map <leader>z :action ToggleDistractionFreeMode<CR>
+" File navigation
+map <leader>ff <action>(GotoFile)
+map <leader>fr <action>(RecentFiles)
+map <leader>fl <action>(RecentLocations)
 
-" Refactorings
-map <leader>rn :action RenameElement<CR> " name
-map <leader>rm :action ExtractMethod<CR> " method
-map <leader>rv :action IntroduceVariable<CR> " variable
-map <leader>rp :action ReformatCode<CR> " prettify
-map <leader>rf :action IntroduceField<CR> " field
-map <leader>ri :action OptimizeImports<CR> " imports
-map <leader>rr :action Refactorings.QuickListPopupAction<CR> " refactoring
+" Refactoring
+map <leader>rn <Action>(RenameElement)
+map <leader>rm <Action>(ExtractMethod)
+map <leader>rv <Action>(IntroduceVariable)
+map <leader>rf <Action>(IntroduceField)
+map <leader>rr <Action>(Refactorings.QuickListPopupAction)
 
 " Definitions and usages
-nmap <leader>td :action GoToDeclaration<CR> " Declaration
-nmap <leader>tu :action ShowUsages<CR> " Usages
+nmap <leader>td <Action>(GoToDeclaration)
+nmap <leader>td <Action>(ShowUsages)
 
-" Show context menu
-map <leader>cm :action ShowIntentionActions<CR> " context menu
-
-" Go to errors
-map <leader>en :action ReSharperGotoNextErrorInSolution<CR> " error next
-map <leader>ep :action ReSharperGotoPrevErrorInSolution<CR> " error previous
-
-" - NERDTree configuration?
-" - Find file / fuzzy finder
+" Errors
+map <leader>en <Action>(ReSharperGotoNextErrorInSolution)
+map <leader>ep <Action>(ReSharperGotoPrevErrorInSolution)
