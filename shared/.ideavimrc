@@ -18,12 +18,36 @@ set visualbell
 " Use system clipboard
 set clipboard+=unnamed   
 
+let mapleader = ";"
+
 
 "" Plugin Settings
 "" ========================================================
 
 set surround
 set highlightedyank
+
+" Which-key settings
+set which-key
+let g:WhichKey_FontSize = 14
+let g:WhichKey_PrefixColor = "#41ead4"
+let g:WhichKey_CommandColor = "#f335b2"
+
+let g:WhichKeyDesc_leader = "<leader> Leader key"
+
+let g:WhichKeyDesc_goto = "<leader>g Go to X"
+let g:WhichKeyDesc_goto_declaration = "<leader>gd Go to Definition"
+let g:WhichKeyDesc_goto_implementation = "<leader>gi Go to Implementation"
+let g:WhichKeyDesc_goto_usages = "<leader>gu Go to Usages"
+let g:WhichKeyDesc_goto_test = "<leader>gt Go to Test"
+let g:WhichKeyDesc_goto_back = "<leader>gb Go Back"
+let g:WhichKeyDesc_goto_forward = "<leader>gf Go Forward"
+
+let g:WhichKeyDesc_easymotion = "<leader>j Jump with Easymotion"
+
+" Easymotion settings
+set easymotion
+set notimeout
 
 
 "" Key mappings
@@ -34,10 +58,6 @@ inoremap jk <Esc>
 " Tab navigation
 nnoremap <A-n> :tabnext<CR>
 nnoremap <A-p> :tabprev<CR>
-
-" Window splits
-nnoremap wv <C-w>v
-nnoremap ws <C-w>s
 
 " Pane navigation
 nnoremap <A-h> <C-w>h
@@ -59,14 +79,21 @@ nnoremap qj @q
 "" Leader commands
 "" ========================================================
 
-let mapleader = ";"
-
 " Comment lines
 map <leader>c <action>(CommentByLineComment)
 
+" Jump around with easymotion
+map <leader>j <Plug>(easymotion-s)
+
 " Folding
-nnoremap <leader>zc :action CollapseAllRegions<CR>
-nnoremap <leader>zo :action ExpandAllRegions<CR>
+map <leader>zc :action CollapseAllRegions<CR>
+map <leader>zo :action ExpandAllRegions<CR>
+
+" Window splits
+map <leader>wv <Action>(SplitVertically)
+map <leader>ws <Action>(SplitHorizontally)
+map <leader>wu <Action>(Unsplit)
+map <leader>wm <Action>(MoveEditorToOppositeTabGroup)
 
 " Toggle Zen mode
 map <leader>z <action>(ToggleDistractionFreeMode)
@@ -83,6 +110,9 @@ map <leader>ff <action>(GotoFile)
 map <leader>fr <action>(RecentFiles)
 map <leader>fl <action>(RecentLocations)
 
+" Close active tab
+map <leader>q <action>(CloseContent)
+
 " Refactoring
 map <leader>rn <Action>(RenameElement)
 map <leader>rm <Action>(ExtractMethod)
@@ -90,9 +120,13 @@ map <leader>rv <Action>(IntroduceVariable)
 map <leader>rf <Action>(IntroduceField)
 map <leader>rr <Action>(Refactorings.QuickListPopupAction)
 
-" Definitions and usages
-nmap <leader>td <Action>(GoToDeclaration)
-nmap <leader>td <Action>(ShowUsages)
+" Go to code
+nmap <leader>gd <Action>(GoToDeclaration)
+nmap <leader>gi <Action>(GotoImplementation)
+nmap <leader>gu <Action>(ShowUsages)
+nmap <leader>gt <Action>(GotoTest)
+nmap <leader>gf <Action>(Back)
+nmap <leader>gb <Action>(Forward)
 
 " Errors
 map <leader>en <Action>(ReSharperGotoNextErrorInSolution)
