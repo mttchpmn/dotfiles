@@ -62,7 +62,9 @@ let g:WhichKeyDesc_zen_mode = "<leader>dz Toggle Zen mode"
 let g:WhichKeyDesc_df_mode = "<leader>dd Toggle Distraction-Free mode"
 let g:WhichKeyDesc_fullscreen = "<leader>df Toggle full screen"
 
-let g:WhichKeyDesc_context_menu = "<leader>m Open context menu"
+let g:WhichKeyDesc_action= "<leader>a Actions"
+let g:WhichKeyDesc_action_context_menu = "<leader>am Open context menu"
+let g:WhichKeyDesc_action_search = "<leader>as Open command modal"
 
 let g:WhichKeyDesc_file_nav = "<leader>f File navigation"
 let g:WhichKeyDesc_file_nav_goto_file = "<leader>ff Go to File"
@@ -146,8 +148,9 @@ map <leader>dd <action>(ToggleDistractionFreeMode)
 map <leader>dz <action>(ToggleZenMode)
 map <leader>df <action>(ToggleFullScreen)
 
-" Context menu
-map <leader>m <action>(ShowIntentionActions)
+" Actions
+map <leader>am <action>(ShowIntentionActions)
+map <leader>as <action>(SearchEverywhere)
 
 " File navigation
 map <leader>ff <action>(GotoFile)
