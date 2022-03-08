@@ -18,13 +18,14 @@
     "Python.Python.3",
     "Oracle.JDK.17",
     "Docker.DockerDesktop",
-    "JanDeDobbeleer.OhMyPosh"
+    "JanDeDobbeleer.OhMyPosh",
+    "code52.Carnac"
   ],
   "modules": ["Terminal-Icons", "Posh-Git", "z"],
   "downloads": [
     "https://www.rust-lang.org/tools/install",
     "https://github.com/coreybutler/nvm-windows/releases",
-    "https://github.com/neovim/neovim/wiki/Installing-Neovim"
+    "khttps://github.com/neovim/neovim/wiki/Installing-Neovim"
   ],
   "files": [
     {
@@ -37,7 +38,7 @@
     },
     {
       "source": "windows\\powertoys\\keyboard_remaps.json",
-      "target": "AppData\\Local\\Microsoft\\PowerToys\\Keyboard` Manager\\default.json"
+      "target": "AppData\\Local\\Microsoft\\PowerToys\\Keyboard Manager\\default.json"
     }
   ],
   "commands": [

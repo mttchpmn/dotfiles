@@ -15,7 +15,6 @@ set incsearch
 set hlsearch
 
 set visualbell
-set noerrorbells
 
 " Use system clipboard
 set clipboard+=unnamed    
@@ -36,10 +35,8 @@ inoremap jk <Esc>
 
 " Tab movement
 " Can also use gt / gT and :tabp / :tabn
-nnoremap tl :tabnext<CR>
-nnoremap th :tabprev<CR>
-"nnoremap tn :tabnew<CR> " Doesnt work in Rider :(
-nnoremap tq :tabclose<CR> " Doesn't work properly in Rider :(
+nnoremap L :tabnext<CR>
+nnoremap H :tabprev<CR>
 
 " Window movement
 " Can also use <C-w> + hjkl
@@ -85,6 +82,10 @@ nnoremap <leader>zo :action ExpandAllRegions<CR>
 
 " Comment lines easily
 nnoremap <leader>c :action CommentByLineComment<CR>
+
+" Navigate popup menu
+inoremap <C-j> :action PopupMenu-selectNext<CR>
+inoremap <C-k> :action PopupMenu-selectPrev<CR>
 
 " File finding
 nnoremap <leader>fr :action RecentFiles<CR>
