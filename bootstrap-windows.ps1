@@ -56,7 +56,7 @@ function Link-Files([string] $configPath) {
 		$original = "$PSScriptRoot\$source"
 
 
-		Write-Host "Symlinking $link to point to $source"
+		Write-Host "Symlinking $link to point to $original"
 
 		New-Item -ItemType SymbolicLink -Force -Path $link -Target $original | Out-Null
 	}

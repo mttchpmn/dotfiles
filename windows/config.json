@@ -1,6 +1,7 @@
 {
   "packages": [
     "Microsoft.Powershell",
+    "Microsoft.Powertoys",
     "Microsoft.VisualStudioCode",
     "Microsoft.VisualStudio.2022.Community",
     "Jetbrains.Rider",
@@ -33,11 +34,16 @@
     {
       "source": "windows\\Microsoft.PowerShell_profile.ps1",
       "target": "Documents\\PowerShell\\Microsoft.PowerShell_profile.ps1"
+    },
+    {
+      "source": "windows\\powertoys\\keyboard_remaps.json",
+      "target": "AppData\\Local\\Microsoft\\PowerToys\\Keyboard` Manager\\default.json"
     }
   ],
   "commands": [
-    "npm install --global yarn typescript",
+    "npm install --global yarn typescript ts-node",
     "cargo install cargo-edit",
-    "wsl --install -d Ubuntu"
+    "wsl --install -d Ubuntu",
+    "New-Item -ItemType SymbolicLink -Force -Path  C:\\Users\\matt\\AppData\\Local\\Microsoft\\PowerToys\\Keyboard` Manager\\default.json -Target C:\\Users\\matt\\dotfiles\\windows\\powertoys\\keyboard_remaps.json"
   ]
 }

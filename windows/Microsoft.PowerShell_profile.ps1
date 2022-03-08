@@ -4,8 +4,7 @@
 
 Import-Module -Name Terminal-Icons
 
-if ($host.Name -eq 'ConsoleHost')
-{
+if ($host.Name -eq 'ConsoleHost') {
     Import-Module PSReadLine
 }
 
@@ -23,7 +22,8 @@ function OnViModeChange {
     if ($args[0] -eq 'Command') {
         # Set the cursor to a blinking block.
         Write-Host -NoNewLine "`e[1 q"
-    } else {
+    }
+    else {
         # Set the cursor to a blinking line.
         Write-Host -NoNewLine "`e[5 q"
     }
@@ -33,16 +33,16 @@ Set-PSReadLineOption -ViModeIndicator Script -ViModeChangeHandler $Function:OnVi
 
 # Map 'jj' to Esc
 Set-PSReadLineKeyHandler -Chord 'j' -ScriptBlock {
-  if ([Microsoft.PowerShell.PSConsoleReadLine]::InViInsertMode()) {
-    $key = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-    if ($key.Character -eq 'j') {
-      [Microsoft.PowerShell.PSConsoleReadLine]::ViCommandMode()
+    if ([Microsoft.PowerShell.PSConsoleReadLine]::InViInsertMode()) {
+        $key = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+        if ($key.Character -eq 'k') {
+            [Microsoft.PowerShell.PSConsoleReadLine]::ViCommandMode()
+        }
+        else {
+            [Microsoft.Powershell.PSConsoleReadLine]::Insert('j')
+            [Microsoft.Powershell.PSConsoleReadLine]::Insert($key.Character)
+        }
     }
-    else {
-      [Microsoft.Powershell.PSConsoleReadLine]::Insert('j')
-      [Microsoft.Powershell.PSConsoleReadLine]::Insert($key.Character)
-    }
-  }
 }
 # Custom Prompt ----------------------------------------------------
 
@@ -92,8 +92,8 @@ Set-Alias -Name vim -Value "C:\Program Files\Vim\vim82\vim.exe"
 # Functions ################################################################
 
 function symlink {
-    $source=$args[0]
-    $dest=$args[1]
+    $source = $args[0]
+    $dest = $args[1]
 
     New-Item -ItemType SymbolicLink -Path $dest -Target $source
 }
@@ -101,8 +101,8 @@ function symlink {
 # Git Commands and aliases ----------------------------------------------------
 
 function git-clone {
-    $name=$args[0]
-    $repo=$args[1]
+    $name = $args[0]
+    $repo = $args[1]
     git clone "git@github.com:$name/$repo.git"
 }
 Set-Alias -Name gcl -Value git-clone
@@ -144,15 +144,15 @@ function git-commit {
 }
 Set-Alias -Name gct -Value git-commit
 function git-commit-faml {
-    $hasTicket=$(git rev-parse --abbrev-ref HEAD) -match "PFM-\d{4}"
+    $hasTicket = $(git rev-parse --abbrev-ref HEAD) -match "PFM-\d{4}"
 
     if (!$hasTicket) {
         echo "Error: No FirstAML ticket ID found in branch name"
         return
     }
 
-    $ticket=$Matches[0]
-    $message=$args[0]
+    $ticket = $Matches[0]
+    $message = $args[0]
 
     git commit -m "[$ticket] $message"
 }
