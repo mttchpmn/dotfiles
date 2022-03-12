@@ -100,6 +100,11 @@ function symlink {
 
 # Git Commands and aliases ----------------------------------------------------
 
+function open-lazygit {
+    lazygit.exe
+}
+
+Set-Alias -Name lg -Value open-lazygit
 function git-clone {
     $name = $args[0]
     $repo = $args[1]
