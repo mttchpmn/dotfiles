@@ -108,6 +108,8 @@ let g:WhichKeyDesc_errors = "<leader>e Error navigation"
 let g:WhichKeyDesc_errors_next = "<leader>en Go to next error in solution"
 let g:WhichKeyDesc_errors_prev = "<leader>ep Go to previous error in solution"
 
+let g:WhichKeyDesc_tests = "<leader>t Test runner"
+let g:WhichKeyDesc_run_test = "<leader>tr Run test underneath cursor"
 
 "" Key mappings
 "" ========================================================
@@ -210,3 +212,6 @@ map <leader>gb <Action>(Git.Branches)
 " Errors
 map <leader>en <Action>(ReSharperGotoNextErrorInSolution)
 map <leader>ep <Action>(ReSharperGotoPrevErrorInSolution)
+
+" Tests
+map <leader>tr <Action>(RiderUnitTestRunContextAction)
