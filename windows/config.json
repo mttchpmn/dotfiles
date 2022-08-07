@@ -45,6 +45,9 @@
     "npm install --global yarn typescript ts-node",
     "cargo install cargo-edit",
     "wsl --install -d Ubuntu",
+    "pip install --user pipenv",
+    "(Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | py -",
+    "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))",
     "New-Item -ItemType SymbolicLink -Force -Path  C:\\Users\\matt\\AppData\\Local\\Microsoft\\PowerToys\\Keyboard` Manager\\default.json -Target C:\\Users\\matt\\dotfiles\\windows\\powertoys\\keyboard_remaps.json"
   ]
 }

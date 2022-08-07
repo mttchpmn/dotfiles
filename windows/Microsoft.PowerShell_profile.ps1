@@ -86,7 +86,6 @@ Set-PoshPrompt -Theme jandedobbeleer
 Set-Alias -Name c -Value Clear-Host
 Set-Alias -Name ll -Value Get-ChildItem
 Set-Alias -Name man -Value Get-Help
-Set-Alias -Name cat -Value "pygmentize" # pip install pygments
 Set-Alias -Name vim -Value "C:\Program Files\Vim\vim82\vim.exe"
 
 # Functions ################################################################
@@ -162,3 +161,13 @@ function git-commit-faml {
     git commit -m "[$ticket] $message"
 }
 Set-Alias -Name gcf -Value git-commit-faml
+
+# Import the Chocolatey Profile that contains the necessary code to enable
+# tab-completions to function for `choco`.
+# Be aware that if you are missing these lines from your profile, tab completion
+# for `choco` will not function.
+# See https://ch0.co/tab-completion for details.
+$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
+if (Test-Path($ChocolateyProfile)) {
+  Import-Module "$ChocolateyProfile"
+}
