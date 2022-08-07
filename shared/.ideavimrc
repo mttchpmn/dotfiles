@@ -28,6 +28,7 @@ set surround
 set highlightedyank
 set sneak
 set nerdtree
+set quickscope
 
 " Easymotion settings
 set easymotion
