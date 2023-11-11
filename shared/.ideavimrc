@@ -115,6 +115,8 @@ let g:WhichKeyDesc_run_test = "<leader>tr Run test underneath cursor"
 let g:WhichKeyDesc_lang = "<leader>l Language Specific Features"
 let g:WhichKeyDesc_lang_flutter = "<leader>lf Flutter actions"
 let g:WhichKeyDesc_lang_flutter_extract_widget = "<leader>lfw Extract widget"
+let g:WhichKeyDesc_lang_flutter_extract_widget = "<leader>lfr Hot Reload"
+
 "" Key mappings
 "" ========================================================
 
@@ -222,3 +224,4 @@ map <leader>tr <Action>(RiderUnitTestRunContextAction)
 
 " Flutter Specific
 map <leader>lfw <Action>(Flutter.ExtractWidget)
+map <leader>lfr <Action>(Flutter.Toolbar.ReloadAction)
