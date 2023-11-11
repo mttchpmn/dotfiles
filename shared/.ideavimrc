@@ -112,6 +112,9 @@ let g:WhichKeyDesc_errors_prev = "<leader>ep Go to previous error in solution"
 let g:WhichKeyDesc_tests = "<leader>t Test runner"
 let g:WhichKeyDesc_run_test = "<leader>tr Run test underneath cursor"
 
+let g:WhichKeyDesc_lang = "<leader>l Language Specific Features"
+let g:WhichKeyDesc_lang_flutter = "<leader>lf Flutter actions"
+let g:WhichKeyDesc_lang_flutter_extract_widget = "<leader>lfw Extract widget"
 "" Key mappings
 "" ========================================================
 
@@ -216,3 +219,6 @@ map <leader>ep <Action>(ReSharperGotoPrevErrorInSolution)
 
 " Tests
 map <leader>tr <Action>(RiderUnitTestRunContextAction)
+
+" Flutter Specific
+map <leader>lfw <Action>(Flutter.ExtractWidget)
