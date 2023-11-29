@@ -15,7 +15,7 @@ set encoding=utf8
 syntax on
 
 " Set color scheme
-colorscheme delek
+colorscheme elflord
 
 " Show line numbers
 set number
@@ -137,7 +137,7 @@ nnoremap tn :tabnew<CR>
 nnoremap tx :tabclose<CR>
 
 " Set jj to send <esc> key
-inoremap jj <esc>
+inoremap jk <esc>
 
 
 " Use Ctrl+hjkl keys to move between windows
