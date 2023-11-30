@@ -49,6 +49,7 @@ let g:WhichKeyDesc_easymotion = "<leader>j Jump with Easymotion"
 let g:WhichKeyDesc_easymotion_prefix = "<leader><leader>"
 
 let g:WhichKeyDesc_comment = "<leader>c Comment line"
+let g:WhichKeyDesc_bookmark = "<leader>b Toggle bookmark"
 
 let g:WhichKeyDesc_fold = "<leader>z Folding"
 let g:WhichKeyDesc_fold_all = "<leader>zc Fold all regions"
@@ -154,6 +155,8 @@ inoremap <C-k> <Action>(PopupMenu-selectPrev)
 " Comment lines
 map <leader>c <action>(CommentByLineComment)
 
+" Toggle bookmark
+map <leader>b <action>(ToggleBookmark)
 " Jump around with easymotion
 map <leader>j <Plug>(easymotion-s)
 
